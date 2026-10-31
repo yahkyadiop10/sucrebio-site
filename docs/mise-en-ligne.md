@@ -22,3 +22,14 @@ Le dossier fonctionne tel quel sur n'importe quel hébergement de fichiers (Netl
 | Bouton WhatsApp flottant | Extension WhatsApp Chat |
 | Balises title/description | Yoast SEO (reprendre `pt_*` / `pd_*`) |
 | Pages légales | Pages WordPress simples, liées dans le menu du pied de page |
+
+## Hébergement actuel : GitHub + Vercel + Neon (depuis le 31/10/2026)
+- **Code :** dépôt GitHub `yahkyadiop10/sucrebio-site`. La branche `main` = le site en ligne. Chaque modification passe par une branche et une demande de fusion (pull request) ; Vercel publie un lien d'aperçu à valider avant fusion.
+- **Vercel :** site statique sans compilation, plus une fonction `api/formulaire.js` (région Francfort). Les fichiers listés dans `.vercelignore` (docs, outils, archives) ne sont pas publiés.
+- **Neon :** projet `sucrebio`, base `sucrebio` (région Francfort). Schéma dans `neon/schema.sql` :
+  - `messages_contact` : envois du formulaire de contact ;
+  - `demandes_distributeur` : envois du formulaire « Devenir distributeur ».
+  La colonne `traite` sert à marquer une demande comme traitée.
+- **Formulaires :** ils ouvrent toujours WhatsApp avec le message prérempli, et envoient en plus une copie à `/api/formulaire`, qui l'enregistre dans Neon. Un champ piège caché (`_hp`) écarte les robots.
+- **Secret :** la variable d'environnement Vercel `DATABASE_URL` utilise le rôle Neon `site_web`, qui peut seulement ajouter des lignes (ni lire, ni modifier, ni supprimer). Ne jamais écrire ce secret dans le dépôt.
+- **Lire les demandes :** console Neon > projet sucrebio > Tables, ou SQL Editor : `SELECT * FROM messages_contact ORDER BY cree_le DESC;`
