@@ -1,5 +1,16 @@
 # Historique des versions
 
+## V5 · 31 octobre 2026 · ton de grande marque, finition premium
+- Ton marketing bien-être : SucréBio au centre, associé à un bienfait ressenti (légèreté, plaisir, énergie, sourire). Plus de vocabulaire médical dans les titres et accroches ; les ingrédients sont nommés sur la page Produit et dans la FAQ.
+- Signature : « La douceur, en toute légèreté » (EN : « Sweetness, made light »).
+- Accueil : bouton principal « Découvrir SucréBio », WhatsApp en second ; pastilles flottantes en verre dépoli (une troisième : 100 % d'origine naturelle) ; anneaux autour du produit ; bandeau défilant en italique avec bords fondus.
+- En-tête : « Commander » devient « Où acheter » (lien vers les points de vente) sur les 16 pages.
+- Finition : boutons en dégradé avec reflet, cartes et chiffres clés plus raffinés, assistant plus discret, WhatsApp reste le bouton flottant principal.
+- Accueil : les 4 cartes à chiffres deviennent 4 « moments SucréBio » en photo (café, thé en famille, douceurs maison, cuisine) ; la carte « bien-être » affiche des pastilles au lieu des zéros.
+- Points de vente : recherche par ville / quartier ou « Autour de moi » ; sans revendeur proche, message de prise en charge personnalisée par la direction commerciale (WhatsApp ou e-mail). Frise « Notre déploiement » retirée : SucréBio est présenté comme disponible partout.
+- Un seul e-mail partout : info@sucrebio.com (commercial@sucrebio.sn retiré, formulaires compris). Adresse : « Thiès, Sénégal ». « Conditionné » remplace « fabriqué ».
+- À venir avec les données du client : tableau nutritionnel et section « Qualité et transparence ».
+
 ## V4.4 · octobre 2026 · deux e-mails, bandes ciblées
 - Deux adresses : info@sucrebio.com (informations, contact général) et commercial@sucrebio.sn (partenariats, distribution), affichées selon la page ; l'assistant donne l'adresse commerciale pour les partenariats.
 - Bandes de photos limitées à 4 pages, chacune avec ses images : À propos (scènes de vie), Bienfaits (déclinaisons du produit), Blog (usages), Actualités (la marque). Retirées de l'Accueil, de Produit, de Points de vente et de Devenir distributeur.

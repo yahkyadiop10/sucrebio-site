@@ -600,3 +600,159 @@ a.info-row:hover{border-color:var(--leaf);transform:translateX(4px)}
 .vid__thumb{position:relative;display:block;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000}
 .vid__thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.75)}
 .vid__thumb svg{position:absolute;inset:0;margin:auto;width:22px;height:22px;color:#fff}
+
+/* ============ FINITION PREMIUM (V5) ============
+   Couche ajoutée par-dessus le style existant : verre dépoli, reflets, profondeur,
+   bandeau défilant éditorial. Toute animation s'arrête avec prefers-reduced-motion. */
+:root{
+  --shadow-soft:0 2px 6px rgb(16 36 26/.04),0 24px 60px -28px rgb(16 36 26/.28);
+  --ring:linear-gradient(135deg,rgb(255 255 255/.9),rgb(255 255 255/.25) 40%,rgb(106 180 45/.35));
+  --grad-orange:linear-gradient(135deg,#f6ad55,#f39a3c 45%,#e8900a);
+  --grad-green:linear-gradient(160deg,#145230,#0b2e1a 70%,#071f12);
+}
+
+/* Titres plus affirmés, lecture plus aérée */
+h2{letter-spacing:-.015em}
+.lead{font-size:clamp(1.05rem,1rem + .3vw,1.2rem);line-height:1.7;color:var(--text-2)}
+.center .eyebrow::after{content:"";width:22px;height:2px;background:var(--orange);border-radius:2px}
+
+/* En-tête : verre plus fin, ligne lumineuse */
+.header{box-shadow:0 1px 0 rgb(255 255 255/.5) inset}
+.header.is-scrolled{box-shadow:0 10px 30px -22px rgb(7 31 18/.45)}
+
+/* Boutons : dégradé, reflet au survol */
+.btn{position:relative;overflow:hidden;isolation:isolate;letter-spacing:.01em}
+.btn:not(.btn--ghost):not(.btn--wa):not(.btn--green){background:var(--grad-orange)}
+.btn--green{background:var(--grad-green)}
+.btn::after{content:"";position:absolute;inset:0 auto 0 -60%;width:45%;z-index:-1;background:linear-gradient(100deg,transparent,rgb(255 255 255/.45),transparent);transform:skewX(-20deg);opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  .btn:hover::after{animation:sheen .9s var(--ease)}
+  @keyframes sheen{0%{left:-60%;opacity:1}100%{left:130%;opacity:0}}
+}
+.btn--ghost{background:color-mix(in srgb,var(--surface) 55%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+
+/* HERO : halo, anneaux, reflet sur le produit */
+.hero h1{font-size:clamp(2.9rem,1.6rem + 5.6vw,6rem);letter-spacing:-.02em}
+.hero__disc{background:radial-gradient(circle at 30% 25%,#2a7a45 0,transparent 45%),conic-gradient(from 200deg,var(--green-800),var(--green-700),var(--green-950),var(--green-800));
+  box-shadow:0 40px 90px -30px rgb(7 31 18/.6),inset 0 0 0 1px rgb(255 255 255/.08),inset 0 30px 60px -30px rgb(255 255 255/.18)}
+.hero__disc::before{content:"";position:absolute;inset:-6%;border-radius:50%;background:radial-gradient(closest-side,rgb(243 154 60/.28),transparent 70%);z-index:-1;filter:blur(20px)}
+.hero__rings{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.hero__rings span{position:absolute;width:min(560px,104%);aspect-ratio:1;border-radius:50%;border:1px solid color-mix(in srgb,var(--green-700) 22%,transparent)}
+.hero__rings span+span{width:min(640px,118%);border-style:dashed;border-color:color-mix(in srgb,var(--orange) 30%,transparent)}
+@media (prefers-reduced-motion:no-preference){
+  .hero__rings span+span{animation:spin 60s linear infinite}
+  @keyframes spin{to{rotate:360deg}}
+}
+
+/* Pastilles flottantes : verre dépoli, bordure lumineuse, flottement décalé */
+.float-card{z-index:2;padding:.8rem 1.1rem .8rem .8rem;gap:.75rem;border-radius:20px;border:0;
+  background:linear-gradient(135deg,rgb(255 255 255/.86),rgb(255 255 255/.62));backdrop-filter:blur(18px) saturate(1.5);-webkit-backdrop-filter:blur(18px) saturate(1.5);
+  box-shadow:0 18px 40px -18px rgb(7 31 18/.45),0 2px 6px rgb(7 31 18/.06)}
+.float-card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:var(--ring);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.float-card span{color:var(--ink-2)}
+.float-card strong{color:var(--green-800)}
+.fc-ico{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--leaf-soft),#cfe8b6);color:var(--green-700);flex:none}
+.fc-ico--o{background:linear-gradient(135deg,#fdebd6,#f9d3a6);color:var(--orange-600)}
+.float-card img{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#eef6ff,#dbeafe);padding:4px}
+.float-card--a{top:4%;left:-2%}
+.float-card--b{bottom:6%;right:-2%}
+.float-card--c{top:46%;right:-4%}
+@media (max-width:640px){.float-card--c{display:none}}
+@media (prefers-reduced-motion:no-preference){
+  .float-card{animation:bob 7s ease-in-out infinite}
+  .float-card--b{animation-delay:-2.3s}
+  .float-card--c{animation-delay:-4.6s}
+  @keyframes bob{50%{translate:0 -10px}}
+}
+:root[data-theme="dark"] .float-card{background:linear-gradient(135deg,rgb(14 38 24/.85),rgb(14 38 24/.6))}
+:root[data-theme="dark"] .float-card span{color:var(--text-2)}
+:root[data-theme="dark"] .float-card strong{color:var(--leaf)}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .float-card{background:linear-gradient(135deg,rgb(14 38 24/.85),rgb(14 38 24/.6))}
+  :root:not([data-theme="light"]) .float-card span{color:var(--text-2)}
+}
+
+/* Petites pastilles sous le titre : verre + liseré */
+.chip{background:color-mix(in srgb,var(--surface) 70%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-color:color-mix(in srgb,var(--leaf) 28%,var(--line));box-shadow:0 6px 18px -12px rgb(7 31 18/.35);padding:.5rem 1rem .5rem .5rem;transition:transform .25s var(--ease),box-shadow .25s}
+.chip:hover{transform:translateY(-2px);box-shadow:0 12px 24px -14px rgb(7 31 18/.45)}
+.chip b{width:26px;height:26px;background:linear-gradient(135deg,var(--green-700),var(--green-900));color:#fff;font-size:.78rem;font-family:var(--sans)}
+
+/* Bandeau défilant : éditorial, bords fondus, italique de marque */
+.marquee{position:relative;background:var(--grad-green);padding-block:1.35rem;border:0;
+  box-shadow:inset 0 1px 0 rgb(255 255 255/.06),inset 0 -1px 0 rgb(0 0 0/.25);
+  -webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee__track{gap:3.5rem;font:italic 500 clamp(1.3rem,1.1rem + .8vw,1.75rem)/1 var(--serif);letter-spacing:.01em;text-transform:none;color:#f3efe4}
+.marquee__track span{gap:3.5rem}
+.marquee__track span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--grad-orange);box-shadow:0 0 0 4px rgb(243 154 60/.18)}
+.marquee__track span:nth-child(3n+2){color:#f6c58a}
+
+/* Chiffres clés : verre, chiffres en dégradé */
+.stats{background:transparent;border:0;gap:.75rem;overflow:visible}
+.stat{border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow-soft);padding:1.6rem 1.4rem;position:relative;overflow:hidden}
+.stat::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--leaf),var(--orange))}
+.stat strong{background:linear-gradient(135deg,var(--green-700),var(--leaf));-webkit-background-clip:text;background-clip:text;color:transparent!important}
+
+/* Cartes : ombre douce, liseré lumineux et halo au survol */
+.card{box-shadow:var(--shadow-soft);border-color:color-mix(in srgb,var(--line) 70%,transparent)}
+.card::after{content:"";position:absolute;inset:auto -30% -60% auto;width:70%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(closest-side,rgb(106 180 45/.16),transparent 70%);opacity:0;transition:opacity .4s var(--ease);pointer-events:none}
+.card:hover{box-shadow:0 30px 60px -30px rgb(7 31 18/.4)}
+.card:hover::after{opacity:1}
+.card--feature{background:var(--grad-green)}
+.card--feature::before{content:"";position:absolute;inset:-30% -20% auto auto;width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgb(243 154 60/.25),transparent 70%)}
+.ico{background:linear-gradient(135deg,var(--leaf-soft),#d6ecc0)}
+.ico--o{background:linear-gradient(135deg,#fdebd6,#f9d3a6)}
+
+/* Profils : profondeur et reflet */
+.target{box-shadow:0 30px 60px -32px rgb(7 31 18/.6);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.target:hover{transform:translateY(-6px);box-shadow:0 40px 70px -30px rgb(7 31 18/.7)}
+.target::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(160deg,rgb(255 255 255/.14),transparent 40%);pointer-events:none}
+
+/* Bloc d'appel final */
+.cta-band{background:var(--grad-green);box-shadow:var(--shadow-lg)}
+.cta-band::after{content:"";position:absolute;inset:-40% -10% auto auto;width:55%;aspect-ratio:1;border-radius:50%;z-index:-1;background:radial-gradient(closest-side,rgb(243 154 60/.3),transparent 70%)}
+
+/* Boutons flottants : l'assistant devient discret, WhatsApp reste le bouton principal */
+.fab--bot{width:46px;height:46px;background:color-mix(in srgb,var(--surface) 80%,transparent);color:var(--green-700);border:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.fab--bot svg{width:22px;height:22px}
+.fab--bot::after{top:4px;right:4px;width:9px;height:9px;border-color:var(--surface)}
+.fab--wa{box-shadow:0 14px 34px -10px rgb(37 211 102/.65)}
+
+
+/* Recherche de points de vente */
+.pdv{position:relative;overflow:hidden;isolation:isolate;border-radius:calc(var(--radius) + 6px);padding:clamp(1.4rem,1rem + 2.5vw,2.8rem);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-soft);margin-bottom:2.5rem}
+.pdv::before{content:"";position:absolute;inset:-50% -15% auto auto;width:60%;aspect-ratio:1;border-radius:50%;z-index:-1;background:radial-gradient(closest-side,rgb(106 180 45/.16),transparent 70%)}
+.pdv__head{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.5rem}
+.pdv__head h2{font-size:clamp(1.6rem,1.3rem + 1.4vw,2.4rem);margin-bottom:.3rem}
+.pdv__head p{margin:0;color:var(--text-2)}
+.pdv__form{display:grid;gap:.75rem}
+.pdv__form input{width:100%;min-height:54px;padding:.8rem 1.2rem;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);font-size:1rem;transition:border-color .2s,box-shadow .2s}
+.pdv__form input:focus{outline:0;border-color:var(--green-600);box-shadow:0 0 0 4px color-mix(in srgb,var(--leaf) 22%,transparent)}
+@media (min-width:720px){.pdv__form{grid-template-columns:1fr auto auto}}
+.pdv__res{margin-top:1.5rem}
+.pdv__res .stockists{margin-top:1rem}
+.pdv__msg{margin:0;color:var(--muted)}
+.pdv__none{display:flex;gap:1rem;align-items:flex-start;padding:1.4rem;border-radius:var(--radius);background:linear-gradient(135deg,color-mix(in srgb,var(--orange) 9%,var(--surface)),var(--surface));border:1px solid color-mix(in srgb,var(--orange) 30%,var(--line))}
+.pdv__none h3{margin-bottom:.35rem}
+.pdv__none p{margin:0;color:var(--text-2)}
+@media (max-width:560px){.pdv__head,.pdv__none{flex-direction:column}}
+
+/* Accueil : moments SucréBio (photos d'ambiance en petit format) */
+.moments{display:grid;gap:1rem;grid-template-columns:repeat(2,1fr)}
+@media (min-width:900px){.moments{grid-template-columns:repeat(4,1fr)}}
+.moment{position:relative;margin:0;border-radius:20px;overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow-soft);isolation:isolate;background:var(--sand)}
+.moment img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:scale .8s var(--ease)}
+.moment::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgb(7 31 18/.88));z-index:0}
+.moment figcaption{position:absolute;inset:auto 0 0;z-index:1;padding:1.1rem 1.1rem 1.2rem;color:#fff;display:grid;gap:.3rem}
+.moment strong{font:600 clamp(1.25rem,1.05rem + .8vw,1.6rem)/1.1 var(--serif)}
+.moment span{font-size:.88rem;line-height:1.45;color:rgb(255 255 255/.85)}
+.moment:hover img{scale:1.06}
+@media (max-width:520px){.moment span{font-size:.8rem}}
+
+/* Carte « Pensé pour votre bien-être » : pastilles à la place des chiffres */
+.feature-pills{list-style:none;padding:0;margin:1rem 0 1.1rem;display:flex;flex-wrap:wrap;gap:.5rem;max-width:32ch}
+.feature-pills li{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .95rem .5rem .55rem;border-radius:999px;font-size:.92rem;font-weight:500;color:#fff;
+  background:linear-gradient(135deg,rgb(255 255 255/.16),rgb(255 255 255/.06));border:1px solid rgb(255 255 255/.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.feature-pills svg{width:22px;height:22px;padding:4px;border-radius:50%;background:var(--grad-orange);color:var(--green-950)}

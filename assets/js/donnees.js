@@ -44,7 +44,7 @@ window.SB_DATA = {
     },
     {
      "motifs": "distribu|revendeur|revendre|grossiste|partenaire",
-     "reponse": "Vous souhaitez vendre SucréBio dans votre commerce ? Remplissez la <a href=\"devenir-distributeur.html\">demande de distribution</a> ou écrivez à <a href=\"mailto:commercial@sucrebio.sn\">commercial@sucrebio.sn</a>, nous vous recontactons rapidement."
+     "reponse": "Vous souhaitez vendre SucréBio dans votre commerce ? Remplissez la <a href=\"devenir-distributeur.html\">demande de distribution</a> ou écrivez à <a href=\"mailto:info@sucrebio.com\">info@sucrebio.com</a>, nous vous recontactons rapidement."
     },
     {
      "motifs": "où|ou acheter|trouver|boutique|magasin|supermarch|pharmac",
@@ -114,7 +114,7 @@ window.SB_DATA = {
     },
     {
      "motifs": "distribut|resell|wholesal|partner",
-     "reponse": "Want to sell SucréBio in your shop? Fill in the <a href=\"devenir-distributeur.html\">distributor application</a> or write to <a href=\"mailto:commercial@sucrebio.sn\">commercial@sucrebio.sn</a>, and we will get back to you quickly."
+     "reponse": "Want to sell SucréBio in your shop? Fill in the <a href=\"devenir-distributeur.html\">distributor application</a> or write to <a href=\"mailto:info@sucrebio.com\">info@sucrebio.com</a>, and we will get back to you quickly."
     },
     {
      "motifs": "where|find|shop|store|supermarket|pharmac|stockist",
@@ -150,11 +150,10 @@ window.SB_DATA = {
   "whatsapp": "221761425530",
   "telephone_affiche": "+221 76 142 55 30",
   "email": "info@sucrebio.com",
-  "email_commercial": "commercial@sucrebio.sn",
   "site": "https://www.sucrebio.com",
   "adresse": {
-   "fr": "Route de Mbour sur l'autoroute, en face de Thiès Ville Neuve, Thiès, Sénégal",
-   "en": "Route de Mbour on the motorway, opposite Thiès Ville Neuve, Thiès, Senegal"
+   "fr": "Thiès, Sénégal",
+   "en": "Thiès, Senegal"
   },
   "ville": "Thiès",
   "pays": "Sénégal",

@@ -17,9 +17,8 @@ Textes bilingues : `{ "fr": "…", "en": "…" }`. Une valeur `null` signifie «
 | `whatsapp` | `"221761425530"` (sans + ni espaces) | tous les liens WhatsApp, le formulaire |
 | `telephone_affiche` | `"+221 76 142 55 30"` | pied de page, contact, fiche entreprise |
 | `email` | `"info@sucrebio.com"` | informations et contact général : pied de page, Contact, mentions légales, fiche entreprise |
-| `email_commercial` | `"commercial@sucrebio.sn"` | partenariats et distribution : Contact, Devenir distributeur, Points de vente, fiche entreprise, assistant |
 | `raison_sociale`, `marque`, `fondateur` | | À propos |
-| `adresse` | `{fr, en}` | À propos |
+| `adresse` | `{fr, en}` | « Thiès, Sénégal » : fiche entreprise |
 | `rccm`, `ninea`, `hebergeur` | `null` → « à compléter » | À propos |
 | `moyens_paiement` | `{confirme, fr[], en[]}` | rappel du vérificateur (CGV) |
 | `reseaux_sociaux` | `facebook`, `instagram`, `tiktok` | réservé (pas encore affiché) |
@@ -33,7 +32,7 @@ Tableau de `{ id, categorie, question{fr,en}, reponse{fr,en} }`. Les réponses a
 
 ## `points-de-vente.json`
 - `villes[]` : `{ nom{fr,en}, statut }` avec `statut` = `disponible` | `bientot` | `prochaine_etape` (frise « Notre déploiement »).
-- `revendeurs[]` : vide pour l'instant (message d'attente affiché). Format d'un revendeur :
+- `revendeurs[]` : vide pour l'instant (la recherche propose alors de contacter la direction commerciale). Champs facultatifs utiles à la recherche : `quartier` (recherche par texte), `lat` et `lng` (recherche « Autour de moi », rayon de 30 km). Format d'un revendeur :
 
 ```json
 { "nom": "Pharmacie Exemple", "ville": "Thiès", "adresse": { "fr": "…", "en": "…" },
