@@ -283,7 +283,7 @@
     const sujet = new URLSearchParams(location.search).get('sujet');
     const subj = $('select[name="subject"]', form);
     if (sujet && subj && $(`option[value="${CSS.escape(sujet)}"]`, subj)) subj.value = sujet;
-    const fields = $$('input,select,textarea', form);
+    const fields = $$('input:not([name="_hp"]),select,textarea', form);
     fields.forEach(el => {
       el.addEventListener('blur', () => validate(el));
       el.addEventListener('input', () => { if (el.getAttribute('aria-invalid') === 'true') validate(el); });
@@ -297,6 +297,13 @@
       const msg = $('[name="message"]', form)?.value.trim();
       const text = `${UI[lang][form.dataset.intro || 'formIntro']}\n\n${lines.join('\n')}${msg ? `\n\n${msg}` : ''}`;
       window.open(waLink(text), '_blank', 'noopener');
+      // Copie dans la base Neon (site en ligne seulement ; un échec ne bloque pas l'envoi WhatsApp).
+      if (location.protocol.startsWith('http')) {
+        const data = Object.fromEntries(new FormData(form));
+        data.formulaire = form.id === 'distribForm' ? 'distributeur' : 'contact';
+        data.langue = lang;
+        fetch('/api/formulaire', { method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify(data), keepalive:true }).catch(() => {});
+      }
       showToast(UI[lang].sent);
       form.reset(); fields.forEach(f => { f.removeAttribute('aria-invalid'); f.setCustomValidity(''); const er = f.parentElement.querySelector('.err'); if (er) er.textContent = ''; });
     });
