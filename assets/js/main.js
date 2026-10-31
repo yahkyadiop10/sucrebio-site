@@ -24,9 +24,13 @@
          sent:'WhatsApp s’ouvre avec votre message.', check:'Merci de corriger les champs en rouge.', waMsg:'Bonjour, je souhaite en savoir plus sur SucréBio', formIntro:'Nouveau message depuis le site SucréBio',
          status:{ disponible:'Disponible', bientot:'Bientôt', prochaine_etape:'Prochaine étape' },
          prod:{ format:'Format', ingredients:'Ingrédients', conservation:'Conservation', origine:'Origine', prix:'Prix', surDemande:'Sur demande, par WhatsApp' },
-         ent:{ rs:'Raison sociale', marque:'Marque', fondateur:'Fondateur', adresse:'Siège', tel:'Téléphone / WhatsApp', email:'E-mail', emailCom:'E-mail commercial', rccm:'RCCM', ninea:'NINEA', todo:'à compléter' },
+         ent:{ rs:'Raison sociale', marque:'Marque', fondateur:'Fondateur', adresse:'Siège', tel:'Téléphone / WhatsApp', email:'E-mail', rccm:'RCCM', ninea:'NINEA', todo:'à compléter' },
          rsEmpty:'La liste détaillée de nos revendeurs arrive bientôt. En attendant, demandez-nous le point de vente le plus proche de chez vous.', rsAsk:'Demander sur WhatsApp', rsJoin:'Devenir distributeur', formIntroDist:'Demande de distribution depuis le site SucréBio',
          pub:{ blog:'Blog', actualite:'Actualité', exemple:'Exemple', read:'Lire la suite →', empty:'Aucune publication pour le moment.', back:'← Toutes les publications', backBlog:'← Retour au blog', backNews:'← Retour aux actualités', missing:'Cette publication est introuvable.', others:'À lire aussi', home:'Accueil', pubs:'Publications' },
+         pdv:{ hint:'Saisissez votre ville ou votre quartier, ou utilisez « Autour de moi ».', found:n => `${n} point${n > 1 ? 's' : ''} de vente près de chez vous`, near:'près de chez vous', at:'à',
+               noneT:'Une prise en charge personnalisée', none:(lieu) => `<strong>SucréBio est disponible partout au Sénégal.</strong> Aucun point de vente n'est encore référencé ${lieu} : nos commerciaux sont en cours de référencement dans votre zone. Notre direction commerciale vous accompagne personnellement pour vous servir au plus vite.`,
+               contact:'Contacter la direction commerciale', mail:'Écrire par e-mail', waMsg:(lieu) => `Bonjour, je souhaite acheter SucréBio ${lieu}. Pouvez-vous m'indiquer le point de vente le plus proche ou une livraison ?`,
+               locating:'Localisation en cours…', geoErr:'Localisation impossible. Saisissez votre ville ou votre quartier.', km:'km' },
          band:{ label:'Galerie SucréBio', pause:'Mettre en pause le défilement', play:'Relancer le défilement' },
          vid:{ soon:'Vidéo à venir', play:'Lire la vidéo', list:'Choisir une vidéo', yt:'Ouvrir sur YouTube', cat:{ produit:'Produit', 'autre-produit':'Autre produit', evenement:'Événement' } } },
     en:{ theme:'Dark mode', themeL:'Light mode', sample:'Sample review', stars:'5 out of 5',
@@ -34,9 +38,13 @@
          sent:'WhatsApp is opening with your message.', check:'Please fix the fields in red.', waMsg:'Hello, I would like to know more about SucréBio', formIntro:'New message from the SucréBio website',
          status:{ disponible:'Available', bientot:'Coming soon', prochaine_etape:'Next step' },
          prod:{ format:'Format', ingredients:'Ingredients', conservation:'Storage', origine:'Origin', prix:'Price', surDemande:'On request, via WhatsApp' },
-         ent:{ rs:'Company name', marque:'Brand', fondateur:'Founder', adresse:'Head office', tel:'Phone / WhatsApp', email:'Email', emailCom:'Sales email', rccm:'RCCM', ninea:'NINEA', todo:'to be completed' },
+         ent:{ rs:'Company name', marque:'Brand', fondateur:'Founder', adresse:'Head office', tel:'Phone / WhatsApp', email:'Email', rccm:'RCCM', ninea:'NINEA', todo:'to be completed' },
          rsEmpty:'Our detailed list of resellers is coming soon. In the meantime, ask us for the nearest point of sale.', rsAsk:'Ask on WhatsApp', rsJoin:'Become a distributor', formIntroDist:'Distributor application from the SucréBio website',
          pub:{ blog:'Blog', actualite:'News', exemple:'Example', read:'Read more →', empty:'No publications yet.', back:'← All publications', backBlog:'← Back to the blog', backNews:'← Back to the news', missing:'This publication could not be found.', others:'Read also', home:'Home', pubs:'Publications' },
+         pdv:{ hint:'Enter your town or neighbourhood, or use “Near me”.', found:n => `${n} point${n > 1 ? 's' : ''} of sale near you`, near:'near you', at:'in',
+               noneT:'Personal assistance', none:(lieu) => `<strong>SucréBio is available all over Senegal.</strong> No point of sale is listed ${lieu} yet: our sales team is currently listing stores in your area. Our sales management will assist you personally to serve you as soon as possible.`,
+               contact:'Contact our sales management', mail:'Write by email', waMsg:(lieu) => `Hello, I would like to buy SucréBio ${lieu}. Could you tell me the nearest point of sale or a delivery option?`,
+               locating:'Locating…', geoErr:'Location unavailable. Please enter your town or neighbourhood.', km:'km' },
          band:{ label:'SucréBio gallery', pause:'Pause the scrolling', play:'Resume the scrolling' },
          vid:{ soon:'Video coming soon', play:'Play the video', list:'Choose a video', yt:'Open on YouTube', cat:{ produit:'Product', 'autre-produit':'Other product', evenement:'Event' } } }
   };
@@ -82,6 +90,31 @@
       el.innerHTML = `<div class="stockists">${list.map(r => `
         <article class="card"><div class="ico"><svg aria-hidden="true"><use href="#i-pin"/></svg></div>
           <h3>${esc(r.nom)}</h3><p>${esc(L(r.adresse))}</p><small>${esc(r.ville)}${r.type ? ' · ' + esc(L(r.type)) : ''}${r.telephone ? ' · ' + esc(r.telephone) : ''}</small></article>`).join('')}</div>`;
+    },
+    pdv(el){
+      const P = UI[lang].pdv, list = (D.points_de_vente || {}).revendeurs || [], q = PDV.q;
+      if (PDV.busy) { el.innerHTML = `<p class="pdv__msg">${P.locating}</p>`; return; }
+      if (PDV.err) { el.innerHTML = `<p class="pdv__msg">${P.geoErr}</p>`; return; }
+      if (!q && !PDV.geo) { el.innerHTML = `<p class="pdv__msg">${P.hint}</p>`; return; }
+      let hits = [];
+      if (PDV.geo) {
+        hits = list.filter(r => r.lat != null && r.lng != null).map(r => ({ r, d: km(PDV.geo, r) })).filter(x => x.d <= 30).sort((a, b) => a.d - b.d);
+      } else {
+        const n = norm(q);
+        hits = list.filter(r => [r.nom, r.ville, r.quartier, L(r.adresse)].some(v => norm(v).includes(n))).map(r => ({ r }));
+      }
+      const place = PDV.geo ? (PDV.geo.city ? `${P.at} ${PDV.geo.city}` : P.near) : `${P.at} ${q}`;
+      if (!hits.length) {
+        const mail = `mailto:${ENT.email || 'info@sucrebio.com'}?subject=${encodeURIComponent('SucréBio · ' + place)}&body=${encodeURIComponent(P.waMsg(place))}`;
+        el.innerHTML = `<div class="pdv__none"><div class="ico ico--o"><svg aria-hidden="true"><use href="#i-store"/></svg></div>
+          <div><h3>${P.noneT}</h3><p>${P.none(esc(place))}</p>
+          <div class="hero__cta" style="margin:1.25rem 0 0"><a class="btn" href="${waLink(P.waMsg(place))}" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>${P.contact}</span></a>
+          <a class="btn btn--ghost" href="${mail}"><svg aria-hidden="true"><use href="#i-mail"/></svg><span>${P.mail}</span></a></div></div></div>`;
+        return;
+      }
+      el.innerHTML = `<p class="pdv__msg"><strong>${P.found(hits.length)}</strong></p><div class="stockists">${hits.map(({ r, d }) => `
+        <article class="card"><div class="ico"><svg aria-hidden="true"><use href="#i-pin"/></svg></div>
+          <h3>${esc(r.nom)}</h3><p>${esc(L(r.adresse))}</p><small>${esc(r.ville)}${r.quartier ? ' · ' + esc(r.quartier) : ''}${r.type ? ' · ' + esc(L(r.type)) : ''}${r.telephone ? ' · ' + esc(r.telephone) : ''}${d != null ? ' · ' + d.toFixed(1).replace('.', lang === 'fr' ? ',' : '.') + ' ' + P.km : ''}</small></article>`).join('')}</div>`;
     },
     produit(el){
       const p = (D.produits || [])[0]; if (!p) return;
@@ -178,7 +211,6 @@
         + row(E.adresse, esc(L(ENT.adresse)))
         + row(E.tel, `<a data-wa href="#">${esc(ENT.telephone_affiche)}</a>`)
         + row(E.email, `<a href="mailto:${esc(ENT.email)}">${esc(ENT.email)}</a>`)
-        + (ENT.email_commercial ? row(E.emailCom, `<a href="mailto:${esc(ENT.email_commercial)}">${esc(ENT.email_commercial)}</a>`) : '')
         + row(E.rccm, ENT.rccm ? esc(ENT.rccm) : todo) + row(E.ninea, ENT.ninea ? esc(ENT.ninea) : todo);
     }
   };
@@ -209,6 +241,36 @@
     if (chatStarted) resetChat();
   }
   $$('.lang button').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+
+  /* ---------- Recherche de points de vente (points-de-vente.html) ----------
+     Par ville / quartier (texte) ou par position (« Autour de moi »). Les revendeurs viennent de
+     points-de-vente.json ; « lat » et « lng » permettent la recherche par position. */
+  const PDV = { q:'', geo:null, busy:false, err:false };
+  const norm = v => String(v ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+  const km = (a, b) => { const R = 6371, r = x => x * Math.PI / 180, dLa = r(b.lat - a.lat), dLo = r(b.lng - a.lng);
+    const h = Math.sin(dLa / 2) ** 2 + Math.cos(r(a.lat)) * Math.cos(r(b.lat)) * Math.sin(dLo / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(h)); };
+  /* Villes de repère pour nommer la zone de l'internaute (aucun service externe) */
+  const CITIES = [['Dakar',14.6928,-17.4467],['Pikine',14.7549,-17.39],['Guédiawaye',14.7833,-17.4],['Rufisque',14.7167,-17.2667],['Thiès',14.791,-16.9359],
+    ['Mbour',14.4198,-16.9649],['Saint-Louis',16.0326,-16.4818],['Touba',14.85,-15.8833],['Kaolack',14.1652,-16.0726],['Ziguinchor',12.5681,-16.2719],
+    ['Diourbel',14.655,-16.2314],['Louga',15.6142,-16.2244],['Tambacounda',13.7707,-13.6673],['Kolda',12.8939,-14.9406],['Fatick',14.339,-16.4111],
+    ['Kaffrine',14.1059,-15.5508],['Matam',15.6559,-13.2554],['Sédhiou',12.7081,-15.5569],['Kédougou',12.5605,-12.1747]];
+  const pdvForm = $('#pdvForm');
+  if (pdvForm) {
+    const out = $('[data-render="pdv"]');
+    const run = () => RENDER.pdv(out);
+    pdvForm.addEventListener('submit', e => { e.preventDefault(); PDV.q = $('#pdvQ').value.trim(); PDV.geo = null; PDV.err = false; run(); });
+    const geoBtn = $('#pdvGeo');
+    if (!('geolocation' in navigator)) geoBtn.hidden = true;
+    geoBtn.addEventListener('click', () => {
+      PDV.busy = true; PDV.err = false; run();
+      navigator.geolocation.getCurrentPosition(pos => {
+        const g = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        const c = CITIES.map(([n, lat, lng]) => ({ n, d: km(g, { lat, lng }) })).sort((a, b) => a.d - b.d)[0];
+        g.city = c && c.d <= 40 ? c.n : '';
+        PDV.geo = g; PDV.q = ''; PDV.busy = false; $('#pdvQ').value = g.city; run();
+      }, () => { PDV.busy = false; PDV.err = true; run(); }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 600000 });
+    });
+  }
 
   /* ---------- Thème clair / sombre ---------- */
   const themeBtn = $('#themeBtn');

@@ -114,35 +114,33 @@
     <ol class="crumbs" aria-label="Fil d'Ariane" data-i18n-attr="aria-label:crumbsLabel"><li><a href="index.html" data-i18n="nav1">Accueil</a></li><li data-i18n="navPart">Partenaires</li><li aria-current="page" data-i18n="nav6">Points de vente</li></ol>
     <p class="eyebrow" data-i18n="whEyebrow">Points de vente</p>
     <h1 data-i18n-html="whTitle">Où trouver <em class="accent">SucréBio ?</em></h1>
-    <p class="lead" data-i18n="whLead">Disponible en boutique, en grande surface et en livraison. Notre réseau s'agrandit partout au Sénégal.</p>
+    <p class="lead" data-i18n="whLead">SucréBio est disponible partout au Sénégal : en boutique, en grande surface et en livraison. Trouvez le point de vente le plus proche de chez vous.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <div class="where" style="margin-top:0">
-      <article class="card reveal"><div class="ico"><svg aria-hidden="true"><use href="#i-store"/></svg></div><h2 class="h3" style="font-size:var(--fs-h3)" data-i18n="wh1t">Boutiques</h2><p data-i18n="wh1">Épiceries, pharmacies et boutiques bien-être partenaires.</p></article>
-      <article class="card reveal"><div class="ico ico--o"><svg aria-hidden="true"><use href="#i-cart"/></svg></div><h2 class="h3" style="font-size:var(--fs-h3)" data-i18n="wh2t">Grandes surfaces</h2><p data-i18n="wh2">Au rayon sucre et produits santé des supermarchés partenaires.</p></article>
-      <article class="card reveal"><div class="ico"><svg aria-hidden="true"><use href="#i-wa"/></svg></div><h2 class="h3" style="font-size:var(--fs-h3)" data-i18n="wh3t">Livraison WhatsApp</h2><p data-i18n="wh3">Commandez en un message, nous livrons chez vous.</p></article>
+    <div class="pdv reveal">
+      <div class="pdv__head">
+        <div class="ico"><svg aria-hidden="true"><use href="#i-pin"/></svg></div>
+        <div><h2 data-i18n="pdvT">Trouver SucréBio près de chez vous</h2><p data-i18n="pdvL">Recherchez par ville, quartier ou commune, ou laissez-nous vous localiser.</p></div>
+      </div>
+      <form class="pdv__form" id="pdvForm" role="search">
+        <label class="sr-only" for="pdvQ" data-i18n="pdvLbl">Ville, quartier ou commune</label>
+        <input id="pdvQ" type="search" placeholder="Ex. Dakar, Mermoz, Thiès, Touba…" data-i18n-attr="placeholder:pdvPh" autocomplete="address-level2" enterkeyhint="search">
+        <button class="btn" type="submit"><span data-i18n="pdvGo">Rechercher</span></button>
+        <button class="btn btn--ghost" type="button" id="pdvGeo"><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="pdvGeo">Autour de moi</span></button>
+      </form>
+      <!-- Résultats calculés à partir de base-de-donnees/points-de-vente.json (revendeurs) -->
+      <div class="pdv__res" data-render="pdv" aria-live="polite"></div>
     </div>
-    <h2 class="reveal" style="margin-top:4rem;font-size:var(--fs-h3)" data-i18n="rmT">Notre déploiement</h2>
-    <!-- Villes lues dans base-de-donnees/points-de-vente.json -->
-    <ol class="roadmap reveal" aria-label="Expansion au Sénégal" data-render="villes">
-      <li class="on"><div><strong>Thiès</strong></div></li>
-      <li class="on"><div><strong>Dakar</strong></div></li>
-    </ol>
+    <div class="where reveal">
+      <article class="card"><div class="ico"><svg aria-hidden="true"><use href="#i-store"/></svg></div><h2 class="h3" style="font-size:var(--fs-h3)" data-i18n="wh1t">Boutiques</h2><p data-i18n="wh1">Épiceries, pharmacies et boutiques bien-être partenaires.</p></article>
+      <article class="card"><div class="ico ico--o"><svg aria-hidden="true"><use href="#i-cart"/></svg></div><h2 class="h3" style="font-size:var(--fs-h3)" data-i18n="wh2t">Grandes surfaces</h2><p data-i18n="wh2">Au rayon sucre et produits santé des supermarchés partenaires.</p></article>
+      <article class="card"><div class="ico"><svg aria-hidden="true"><use href="#i-wa"/></svg></div><h2 class="h3" style="font-size:var(--fs-h3)" data-i18n="wh3t">Livraison WhatsApp</h2><p data-i18n="wh3">Commandez en un message, nous livrons chez vous.</p></article>
+    </div>
   </div>
 </section>
-
-<section class="section band" aria-labelledby="t-rs">
-  <div class="wrap">
-    <h2 id="t-rs" class="reveal" data-i18n="rsT">Nos revendeurs</h2>
-    <!-- Revendeurs lus dans base-de-donnees/points-de-vente.json (liste vide = message d'attente) -->
-    <div data-render="revendeurs"></div>
-    <p class="reveal" style="margin-top:1.5rem" data-i18n-html="rsCom">Commerçant, grossiste ou entreprise ? Écrivez à notre service commercial : <a href="mailto:commercial@sucrebio.sn">commercial@sucrebio.sn</a>, ou remplissez la <a href="devenir-distributeur.html">demande de distribution</a>.</p>
-  </div>
-</section>
-
 <section class="section section--tight">
   <div class="wrap">
     <div class="cta-band reveal">
@@ -170,7 +168,7 @@
         <li><a data-wa href="#" data-bind="telephone_affiche">+221 76 142 55 30</a></li><li><a href="mailto:info@sucrebio.com" data-bind="email">info@sucrebio.com</a></li><li data-i18n="ftCity">Thiès, Sénégal</li>
         <li><button class="theme-toggle" type="button" id="themeBtn"><svg width="16" height="16" aria-hidden="true"><use href="#i-moon"/></svg><span data-i18n="theme">Mode sombre</span></button></li></ul></div>
     </div>
-    <div class="footer__bottom"><span>© <span id="yr">2026</span> SucréBio · SN Industrie SARL</span><span data-i18n="ftMade">Fabriqué avec soin au Sénégal 🇸🇳</span></div>
+    <div class="footer__bottom"><span>© <span id="yr">2026</span> SucréBio · SN Industrie SARL</span><span data-i18n="ftMade">Conditionné avec soin au Sénégal 🇸🇳</span></div>
   </div>
 </footer>
 

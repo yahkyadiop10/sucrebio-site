@@ -720,3 +720,39 @@ h2{letter-spacing:-.015em}
 .fab--bot::after{top:4px;right:4px;width:9px;height:9px;border-color:var(--surface)}
 .fab--wa{box-shadow:0 14px 34px -10px rgb(37 211 102/.65)}
 
+
+/* Recherche de points de vente */
+.pdv{position:relative;overflow:hidden;isolation:isolate;border-radius:calc(var(--radius) + 6px);padding:clamp(1.4rem,1rem + 2.5vw,2.8rem);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-soft);margin-bottom:2.5rem}
+.pdv::before{content:"";position:absolute;inset:-50% -15% auto auto;width:60%;aspect-ratio:1;border-radius:50%;z-index:-1;background:radial-gradient(closest-side,rgb(106 180 45/.16),transparent 70%)}
+.pdv__head{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.5rem}
+.pdv__head h2{font-size:clamp(1.6rem,1.3rem + 1.4vw,2.4rem);margin-bottom:.3rem}
+.pdv__head p{margin:0;color:var(--text-2)}
+.pdv__form{display:grid;gap:.75rem}
+.pdv__form input{width:100%;min-height:54px;padding:.8rem 1.2rem;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);font-size:1rem;transition:border-color .2s,box-shadow .2s}
+.pdv__form input:focus{outline:0;border-color:var(--green-600);box-shadow:0 0 0 4px color-mix(in srgb,var(--leaf) 22%,transparent)}
+@media (min-width:720px){.pdv__form{grid-template-columns:1fr auto auto}}
+.pdv__res{margin-top:1.5rem}
+.pdv__res .stockists{margin-top:1rem}
+.pdv__msg{margin:0;color:var(--muted)}
+.pdv__none{display:flex;gap:1rem;align-items:flex-start;padding:1.4rem;border-radius:var(--radius);background:linear-gradient(135deg,color-mix(in srgb,var(--orange) 9%,var(--surface)),var(--surface));border:1px solid color-mix(in srgb,var(--orange) 30%,var(--line))}
+.pdv__none h3{margin-bottom:.35rem}
+.pdv__none p{margin:0;color:var(--text-2)}
+@media (max-width:560px){.pdv__head,.pdv__none{flex-direction:column}}
+
+/* Accueil : moments SucréBio (photos d'ambiance en petit format) */
+.moments{display:grid;gap:1rem;grid-template-columns:repeat(2,1fr)}
+@media (min-width:900px){.moments{grid-template-columns:repeat(4,1fr)}}
+.moment{position:relative;margin:0;border-radius:20px;overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow-soft);isolation:isolate;background:var(--sand)}
+.moment img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:scale .8s var(--ease)}
+.moment::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgb(7 31 18/.88));z-index:0}
+.moment figcaption{position:absolute;inset:auto 0 0;z-index:1;padding:1.1rem 1.1rem 1.2rem;color:#fff;display:grid;gap:.3rem}
+.moment strong{font:600 clamp(1.25rem,1.05rem + .8vw,1.6rem)/1.1 var(--serif)}
+.moment span{font-size:.88rem;line-height:1.45;color:rgb(255 255 255/.85)}
+.moment:hover img{scale:1.06}
+@media (max-width:520px){.moment span{font-size:.8rem}}
+
+/* Carte « Pensé pour votre bien-être » : pastilles à la place des chiffres */
+.feature-pills{list-style:none;padding:0;margin:1rem 0 1.1rem;display:flex;flex-wrap:wrap;gap:.5rem;max-width:32ch}
+.feature-pills li{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .95rem .5rem .55rem;border-radius:999px;font-size:.92rem;font-weight:500;color:#fff;
+  background:linear-gradient(135deg,rgb(255 255 255/.16),rgb(255 255 255/.06));border:1px solid rgb(255 255 255/.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.feature-pills svg{width:22px;height:22px;padding:4px;border-radius:50%;background:var(--grad-orange);color:var(--green-950)}

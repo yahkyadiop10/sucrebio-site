@@ -19,12 +19,14 @@ Site vitrine statique, bilingue FR/EN, de SucréBio (édulcorant naturel, SN Ind
 - `assets/js/main.js` : langue, thème, menu, progression, assistant, formulaire → WhatsApp, rendus de données.
 - Bilingue : le FR est lu dans le HTML (`data-i18n`, `data-i18n-html`, `data-i18n-attr="attr:cle"`), l'EN dans `assets/js/i18n-en.js`. Toute nouvelle clé doit exister dans les deux. Textes produits uniquement par le JS : objet `UI` dans `main.js`.
 - Données : `base-de-donnees/*.json` = source de vérité. Les pages lisent `assets/js/donnees.js` (`window.SB_DATA`), **généré** par `python3 outils/generer-donnees.py` : ne pas l'éditer à la main. Ce détour existe parce que `fetch()` est bloqué quand on ouvre les pages en `file://`.
-- Zones remplies par le JS : `data-render="temoignages|faq|villes|revendeurs|produit|entreprise|publications|article|bandeau|videos"` (`publications` accepte `data-type="blog|actualite"` et `data-limit`) ; textes liés aux coordonnées : `data-bind="telephone_affiche|email"`.
+- Zones remplies par le JS : `data-render="temoignages|faq|villes|revendeurs|pdv|produit|entreprise|publications|article|bandeau|videos"` (`publications` accepte `data-type="blog|actualite"` et `data-limit`) ; textes liés aux coordonnées : `data-bind="telephone_affiche|email"`.
 - Liens WhatsApp : tout élément `data-wa` reçoit `https://wa.me/<entreprise.whatsapp>` au chargement.
 - Formulaires (contact, demande de distribution) : pas de serveur, ils ouvrent WhatsApp avec le message prérempli (libellés des champs + valeurs). `contact.html?sujet=distributeur` présélectionne le sujet (valeurs : commande, distributeur, produit, partenariat).
 - Bandes de photos défilantes (`bandeau`, données `galerie.json`, une liste par page) **uniquement** sur À propos, Bienfaits, Blog, Actualités (choix du client) ; espace vidéo (`videos`, données `videos.json`, attribut `data-page="accueil|produit"`) ; `source: null` = « Vidéo à venir ». Toute animation doit s'arrêter avec `prefers-reduced-motion` et avoir une pause.
 - Photos générées par IA : ne pas les afficher en grand (textes d'emballage déformés).
-- Deux e-mails : `email` = info@sucrebio.com (informations, contact général), `email_commercial` = commercial@sucrebio.sn (partenariats, distribution).
+- Un seul e-mail public : `email` = info@sucrebio.com, partout (contact, partenariats, distribution, formulaires). Adresse affichée : « Thiès, Sénégal ».
+- Vocabulaire : « conditionné » au Sénégal / à Thiès, jamais « fabriqué » ou « produit ». Ton marketing bien-être, SucréBio au centre ; pas de vocabulaire médical dans les titres.
+- Points de vente : on présente SucréBio comme disponible partout ; la recherche (ville, quartier ou « Autour de moi ») propose la direction commerciale quand aucun revendeur n'est trouvé.
 - Le client valide chaque proposition avant sa mise en œuvre : proposer, attendre son accord.
 - Blog et actualités : une seule page `article.html?id=<id>` affiche chaque publication de `publications.json`. Les articles d'exemple portent `exemple: true`.
 

@@ -5,11 +5,10 @@
   "whatsapp": "221761425530",
   "telephone_affiche": "+221 76 142 55 30",
   "email": "info@sucrebio.com",
-  "email_commercial": "commercial@sucrebio.sn",
   "site": "https://www.sucrebio.com",
   "adresse": {
-    "fr": "Route de Mbour sur l'autoroute, en face de Thiès Ville Neuve, Thiès, Sénégal",
-    "en": "Route de Mbour on the motorway, opposite Thiès Ville Neuve, Thiès, Senegal"
+    "fr": "Thiès, Sénégal",
+    "en": "Thiès, Senegal"
   },
   "ville": "Thiès",
   "pays": "Sénégal",

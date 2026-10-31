@@ -77,7 +77,7 @@ Pas besoin de créer de page : ajoutez une entrée dans `base-de-donnees/publica
 
 ## Bandes de photos et vidéos
 - Bande défilante, sur 4 pages seulement (À propos, Bienfaits, Blog, Actualités) : `<div class="photo-band" data-render="bandeau" data-galerie="bienfaits" data-sens="inverse"></div>`, placée juste après l'en-tête de page (`.page-hero`). Images lues dans la liste `galerie.json` de la page.
-- Deux adresses e-mail dans `entreprise.json` : `email` (info@sucrebio.com, informations et contact général : pied de page, Contact, mentions légales) et `email_commercial` (commercial@sucrebio.sn, partenariats et distribution : Contact, Devenir distributeur, Points de vente, assistant). `data-bind="email|email_commercial"` met aussi à jour le lien `mailto:`.
+- Une seule adresse e-mail publique dans `entreprise.json` : `email` (info@sucrebio.com), utilisée partout, formulaires compris.
 - Espace vidéo : `<div class="vid" data-render="videos" data-page="accueil"></div>` dans une section `.videos-sec`. Vidéos lues dans `videos.json` (champ `pages`). Sans vidéo pour la page, la section se masque.
 
 ## Ajouter une page
