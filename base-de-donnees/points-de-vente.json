@@ -1,0 +1,9 @@
+{
+  "villes": [
+    { "nom": { "fr": "Thiès", "en": "Thiès" }, "statut": "disponible" },
+    { "nom": { "fr": "Dakar", "en": "Dakar" }, "statut": "disponible" },
+    { "nom": { "fr": "Mbour, Saint-Louis, Touba", "en": "Mbour, Saint-Louis, Touba" }, "statut": "bientot" },
+    { "nom": { "fr": "Afrique de l'Ouest", "en": "West Africa" }, "statut": "prochaine_etape" }
+  ],
+  "revendeurs": []
+}

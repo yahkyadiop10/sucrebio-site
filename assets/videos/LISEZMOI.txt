@@ -1,0 +1,3 @@
+Dossier des vidéos hébergées avec le site (format MP4 H.264 conseillé, 1280 × 720, moins de 20 Mo).
+Pour une vidéo YouTube, rien à mettre ici : indiquez simplement le lien dans base-de-donnees/videos.json.
+Mode d'emploi complet : docs/base-de-donnees.md, section videos.json.

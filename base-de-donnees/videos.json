@@ -1,0 +1,35 @@
+[
+  {
+    "id": "presentation-sucrebio",
+    "type": "youtube",
+    "source": null,
+    "affiche": "assets/img/scene-sticks-16x9.webp",
+    "categorie": "produit",
+    "pages": ["accueil", "produit"],
+    "date": null,
+    "titre": {"fr": "Découvrez SucréBio", "en": "Discover SucréBio"},
+    "description": {"fr": "La vidéo de présentation du produit : composition, goût et utilisation au quotidien.", "en": "The product presentation video: ingredients, taste and everyday use."}
+  },
+  {
+    "id": "sucrebio-en-cuisine",
+    "type": "youtube",
+    "source": null,
+    "affiche": "assets/img/scene-cafe-16x9.webp",
+    "categorie": "produit",
+    "pages": ["accueil", "produit"],
+    "date": null,
+    "titre": {"fr": "SucréBio en cuisine", "en": "SucréBio in the kitchen"},
+    "description": {"fr": "Café, bissap, desserts : nos idées pour remplacer le sucre.", "en": "Coffee, bissap, desserts: our ideas for replacing sugar."}
+  },
+  {
+    "id": "nos-evenements",
+    "type": "youtube",
+    "source": null,
+    "affiche": "assets/img/scene-famille-the-16x9.webp",
+    "categorie": "evenement",
+    "pages": ["accueil"],
+    "date": null,
+    "titre": {"fr": "Nos événements", "en": "Our events"},
+    "description": {"fr": "Salons, dégustations et rencontres avec SucréBio.", "en": "Trade fairs, tastings and meetings with SucréBio."}
+  }
+]

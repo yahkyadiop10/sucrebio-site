@@ -1,0 +1,155 @@
+{
+  "a-propos": [
+    {
+      "image": "assets/img/scene-famille-the.webp",
+      "alt": {
+        "fr": "Une famille partage un café sucré avec SucréBio à la maison",
+        "en": "A family sharing coffee sweetened with SucréBio at home"
+      }
+    },
+    {
+      "image": "assets/img/scene-famille-cuisine.webp",
+      "alt": {
+        "fr": "Une famille cuisine un gâteau avec SucréBio",
+        "en": "A family baking a cake with SucréBio"
+      }
+    },
+    {
+      "image": "assets/img/scene-cafe.webp",
+      "alt": {
+        "fr": "Un stick SucréBio versé dans un café",
+        "en": "A SucréBio stick poured into a coffee"
+      }
+    },
+    {
+      "image": "assets/img/scene-dessert.webp",
+      "alt": {
+        "fr": "SucréBio saupoudré sur un cheesecake aux myrtilles",
+        "en": "SucréBio sprinkled on a blueberry cheesecake"
+      }
+    }
+  ],
+  "bienfaits": [
+    {
+      "image": "assets/img/box.webp",
+      "alt": {
+        "fr": "Boîte SucréBio de 100 sticks de 1 g",
+        "en": "SucréBio box of 100 sticks of 1 g"
+      },
+      "format": "portrait"
+    },
+    {
+      "image": "assets/img/scene-cafe.webp",
+      "alt": {
+        "fr": "Un stick SucréBio versé dans un café",
+        "en": "A SucréBio stick poured into a coffee"
+      }
+    },
+    {
+      "image": "assets/img/badge-zero.webp",
+      "alt": {
+        "fr": "0 sucre, 0 calorie",
+        "en": "0 sugar, 0 calories"
+      },
+      "badge": true
+    },
+    {
+      "image": "assets/img/stick.webp",
+      "alt": {
+        "fr": "Stick SucréBio, 0 sucre 0 calorie",
+        "en": "SucréBio stick, 0 sugar 0 calories"
+      }
+    },
+    {
+      "image": "assets/img/scene-dessert.webp",
+      "alt": {
+        "fr": "SucréBio saupoudré sur un cheesecake aux myrtilles",
+        "en": "SucréBio sprinkled on a blueberry cheesecake"
+      }
+    },
+    {
+      "image": "assets/img/badge-dents.webp",
+      "alt": {
+        "fr": "Protège vos dents",
+        "en": "Protects your teeth"
+      },
+      "badge": true
+    },
+    {
+      "image": "assets/img/scene-sticks.webp",
+      "alt": {
+        "fr": "Sticks SucréBio, fruit du moine et sucre",
+        "en": "SucréBio sticks, monk fruit and sugar"
+      }
+    }
+  ],
+  "blog": [
+    {
+      "image": "assets/img/scene-cafe.webp",
+      "alt": {
+        "fr": "Un stick SucréBio versé dans un café",
+        "en": "A SucréBio stick poured into a coffee"
+      }
+    },
+    {
+      "image": "assets/img/scene-dessert.webp",
+      "alt": {
+        "fr": "SucréBio saupoudré sur un cheesecake aux myrtilles",
+        "en": "SucréBio sprinkled on a blueberry cheesecake"
+      }
+    },
+    {
+      "image": "assets/img/scene-sticks.webp",
+      "alt": {
+        "fr": "Sticks SucréBio, fruit du moine et sucre",
+        "en": "SucréBio sticks, monk fruit and sugar"
+      }
+    },
+    {
+      "image": "assets/img/scene-famille-cuisine.webp",
+      "alt": {
+        "fr": "Une famille cuisine un gâteau avec SucréBio",
+        "en": "A family baking a cake with SucréBio"
+      }
+    }
+  ],
+  "actualites": [
+    {
+      "image": "assets/img/scene-sticks.webp",
+      "alt": {
+        "fr": "Sticks SucréBio, fruit du moine et sucre",
+        "en": "SucréBio sticks, monk fruit and sugar"
+      }
+    },
+    {
+      "image": "assets/img/box.webp",
+      "alt": {
+        "fr": "Boîte SucréBio de 100 sticks de 1 g",
+        "en": "SucréBio box of 100 sticks of 1 g"
+      },
+      "format": "portrait"
+    },
+    {
+      "image": "assets/img/scene-famille-the.webp",
+      "alt": {
+        "fr": "Une famille partage un café sucré avec SucréBio à la maison",
+        "en": "A family sharing coffee sweetened with SucréBio at home"
+      }
+    },
+    {
+      "image": "assets/img/badge-zero.webp",
+      "alt": {
+        "fr": "0 sucre, 0 calorie",
+        "en": "0 sugar, 0 calories"
+      },
+      "badge": true
+    },
+    {
+      "image": "assets/img/stick.webp",
+      "alt": {
+        "fr": "Stick SucréBio, 0 sucre 0 calorie",
+        "en": "SucréBio stick, 0 sugar 0 calories"
+      }
+    }
+  ]
+}

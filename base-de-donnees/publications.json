@@ -1,0 +1,54 @@
+[
+  {
+    "id": "nouveau-site-sucrebio",
+    "type": "actualite",
+    "date": "2026-10-15",
+    "exemple": true,
+    "image": "assets/img/box.webp",
+    "titre": { "fr": "Le nouveau site SucréBio est en ligne", "en": "The new SucréBio website is live" },
+    "resume": { "fr": "Produit, bienfaits, points de vente, devenir distributeur, blog : tout SucréBio au même endroit, en français et en anglais.", "en": "Product, benefits, points of sale, becoming a distributor, blog: all of SucréBio in one place, in French and English." },
+    "contenu": {
+      "fr": "<p>Nous sommes heureux de vous présenter le nouveau site de SucréBio. Il rassemble en un seul endroit tout ce qu'il faut savoir sur notre édulcorant naturel 0 sucre, 0 calorie.</p><h2>Ce que vous y trouverez</h2><ul><li>La <a href=\"produit.html\">composition du produit</a> et son mode d'emploi ;</li><li>Ses <a href=\"bienfaits.html\">bienfaits</a> pour les diabétiques, les sportifs et toute la famille ;</li><li>Les <a href=\"points-de-vente.html\">points de vente</a> au Sénégal ;</li><li>Une page pour <a href=\"devenir-distributeur.html\">devenir distributeur</a> ;</li><li>Notre <a href=\"blog.html\">blog</a> de conseils et de recettes.</li></ul><p>Une question ? Notre assistant vous répond directement sur le site, et notre équipe sur WhatsApp.</p>",
+      "en": "<p>We are happy to introduce the new SucréBio website. It brings together everything you need to know about our natural sweetener with 0 sugar and 0 calories.</p><h2>What you will find</h2><ul><li>The <a href=\"produit.html\">product's ingredients</a> and how to use it;</li><li>Its <a href=\"bienfaits.html\">benefits</a> for people with diabetes, athletes and the whole family;</li><li><a href=\"points-de-vente.html\">Points of sale</a> in Senegal;</li><li>A page to <a href=\"devenir-distributeur.html\">become a distributor</a>;</li><li>Our <a href=\"blog.html\">blog</a> of tips and recipes.</li></ul><p>A question? Our assistant answers right on the site, and our team on WhatsApp.</p>"
+    }
+  },
+  {
+    "id": "disponible-thies-dakar",
+    "type": "actualite",
+    "date": "2026-09-01",
+    "exemple": true,
+    "image": "assets/img/stick.webp",
+    "titre": { "fr": "SucréBio disponible à Thiès et à Dakar", "en": "SucréBio now available in Thiès and Dakar" },
+    "resume": { "fr": "Retrouvez SucréBio en boutique, en grande surface et en livraison WhatsApp. Prochaines étapes : Mbour, Saint-Louis et Touba.", "en": "Find SucréBio in shops, supermarkets and via WhatsApp delivery. Next steps: Mbour, Saint-Louis and Touba." },
+    "contenu": {
+      "fr": "<p>SucréBio est désormais disponible à <strong>Thiès</strong> et à <strong>Dakar</strong> : dans des épiceries, pharmacies et boutiques bien-être partenaires, au rayon sucre de supermarchés, et en livraison sur simple message WhatsApp.</p><h2>Et ensuite ?</h2><p>Notre réseau s'agrandit : Mbour, Saint-Louis et Touba sont les prochaines villes, avant l'Afrique de l'Ouest.</p><p>Vous tenez un commerce et souhaitez proposer SucréBio ? <a href=\"devenir-distributeur.html\">Devenez distributeur</a>. Pour trouver le point de vente le plus proche, consultez la page <a href=\"points-de-vente.html\">Points de vente</a>.</p>",
+      "en": "<p>SucréBio is now available in <strong>Thiès</strong> and <strong>Dakar</strong>: in partner grocers, pharmacies and wellness stores, in the sugar aisle of supermarkets, and delivered after a simple WhatsApp message.</p><h2>What's next?</h2><p>Our network is growing: Mbour, Saint-Louis and Touba are the next cities, before West Africa.</p><p>Do you run a shop and want to offer SucréBio? <a href=\"devenir-distributeur.html\">Become a distributor</a>. To find the nearest point of sale, see the <a href=\"points-de-vente.html\">Points of sale</a> page.</p>"
+    }
+  },
+  {
+    "id": "5-facons-utiliser-sucrebio",
+    "type": "blog",
+    "date": "2026-10-01",
+    "exemple": true,
+    "image": "assets/img/stick.webp",
+    "titre": { "fr": "5 façons d'utiliser SucréBio au quotidien", "en": "5 ways to use SucréBio every day" },
+    "resume": { "fr": "Café, ataya, bissap, bouillie, pâtisserie : un stick suffit pour garder le goût sucré sans le sucre.", "en": "Coffee, ataya, bissap, porridge, baking: one stick keeps the sweet taste without the sugar." },
+    "contenu": {
+      "fr": "<p>SucréBio remplace le sucre dans la plupart de vos préparations. Voici cinq idées simples pour l'adopter.</p><h2>1. Le café et le thé du matin</h2><p>Remplacez votre sucre par un stick, puis ajustez selon votre goût.</p><h2>2. L'ataya et le kinkéliba</h2><p>Gardez le plaisir du thé partagé, sans les calories du sucre.</p><h2>3. Le bissap, le gingembre et les jus maison</h2><p>SucréBio se dissout facilement dans les boissons fraîches.</p><h2>4. La bouillie et le yaourt</h2><p>Idéal au petit-déjeuner, pour les grands comme pour les enfants.</p><h2>5. Les gâteaux et desserts</h2><p>SucréBio résiste à la cuisson : utilisez-le dans vos pâtisseries.</p><p>Retrouvez tous les détails sur la page <a href=\"produit.html#utilisation\">Comment l'utiliser</a>.</p>",
+      "en": "<p>SucréBio replaces sugar in most of your recipes. Here are five simple ideas to get started.</p><h2>1. Morning coffee and tea</h2><p>Replace your sugar with one stick, then adjust to taste.</p><h2>2. Ataya and kinkeliba</h2><p>Keep the pleasure of shared tea, without the calories from sugar.</p><h2>3. Bissap, ginger and homemade juice</h2><p>SucréBio dissolves easily in cold drinks.</p><h2>4. Porridge and yoghurt</h2><p>Perfect for breakfast, for adults and children alike.</p><h2>5. Cakes and desserts</h2><p>SucréBio is heat-stable: use it in your baking.</p><p>See all the details on the <a href=\"produit.html#utilisation\">How to use it</a> page.</p>"
+    }
+  },
+  {
+    "id": "erythritol-explique",
+    "type": "blog",
+    "date": "2026-09-20",
+    "exemple": true,
+    "image": "assets/img/box.webp",
+    "titre": { "fr": "L'érythritol expliqué simplement", "en": "Erythritol, simply explained" },
+    "resume": { "fr": "Qu'est-ce que l'érythritol, d'où vient-il et pourquoi l'associer au fruit du moine ? Les réponses en quelques lignes.", "en": "What is erythritol, where does it come from and why pair it with monk fruit? The answers in a few lines." },
+    "contenu": {
+      "fr": "<p>L'érythritol est l'un des deux ingrédients de SucréBio. Voici l'essentiel à savoir.</p><h2>Un édulcorant naturel issu de la fermentation</h2><p>L'érythritol est un édulcorant naturel issu de la fermentation. On le trouve aussi à l'état naturel dans certains fruits.</p><h2>0 calorie, index glycémique 0</h2><p>Il apporte un goût sucré sans calories et sans faire monter le taux de sucre dans le sang.</p><h2>Pourquoi le fruit du moine ?</h2><p>L'extrait de fruit du moine (luo han guo) a un pouvoir sucrant naturel très élevé. Associé à l'érythritol, il donne un goût très proche du sucre, sans arrière-goût amer.</p><p><em>SucréBio ne remplace pas un traitement médical. En cas de diabète ou de régime particulier, demandez conseil à votre médecin.</em></p><p>En savoir plus : <a href=\"produit.html\">le produit</a> · <a href=\"faq.html#q-erythritol\">FAQ</a>.</p>",
+      "en": "<p>Erythritol is one of SucréBio's two ingredients. Here is what you need to know.</p><h2>A natural sweetener from fermentation</h2><p>Erythritol is a natural sweetener from fermentation. It is also found naturally in some fruits.</p><h2>0 calories, glycaemic index 0</h2><p>It gives a sweet taste with no calories and without raising blood sugar.</p><h2>Why monk fruit?</h2><p>Monk fruit extract (luo han guo) has a very high natural sweetening power. Combined with erythritol, it tastes very close to sugar, with no bitter aftertaste.</p><p><em>SucréBio does not replace medical treatment. If you have diabetes or follow a special diet, ask your doctor for advice.</em></p><p>Learn more: <a href=\"produit.html\">the product</a> · <a href=\"faq.html#q-erythritol\">FAQ</a>.</p>"
+    }
+  }
+]

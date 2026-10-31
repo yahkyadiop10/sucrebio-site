@@ -1,0 +1,18 @@
+[
+  {
+    "id": "boite-100-sticks",
+    "nom": { "fr": "SucréBio, édulcorant naturel", "en": "SucréBio natural sweetener" },
+    "format": { "fr": "Boîte de 100 sticks de 1 g", "en": "Box of 100 sticks of 1 g" },
+    "sticks_par_boite": 100,
+    "poids_stick_g": 1,
+    "ingredients": [
+      { "fr": "Érythritol (édulcorant naturel issu de la fermentation)", "en": "Erythritol (natural sweetener from fermentation)" },
+      { "fr": "Extrait de fruit du moine", "en": "Monk fruit extract" }
+    ],
+    "conservation": { "fr": "Endroit frais et sec", "en": "Cool, dry place" },
+    "origine": { "fr": "Conditionné à Thiès, Sénégal", "en": "Packed in Thiès, Senegal" },
+    "prix_xof": null,
+    "disponible": true,
+    "image": "assets/img/box.webp"
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "erythritol",
+    "categorie": "produit",
+    "question": {
+      "fr": "Qu'est-ce que l'érythritol ?",
+      "en": "What is erythritol?"
+    },
+    "reponse": {
+      "fr": "C'est un édulcorant naturel issu de la fermentation, présent à l'état naturel dans certains fruits. Il apporte un goût sucré sans calories et sans effet sur la glycémie.",
+      "en": "It is a natural sweetener from fermentation, found naturally in some fruits. It gives a sweet taste with no calories and no effect on blood sugar."
+    }
+  },
+  {
+    "id": "diabete",
+    "categorie": "sante",
+    "question": {
+      "fr": "SucréBio convient-il aux diabétiques ?",
+      "en": "Is SucréBio suitable for people with diabetes?"
+    },
+    "reponse": {
+      "fr": "Oui. Son index glycémique est de 0 : il ne fait pas monter le taux de sucre dans le sang. Demandez toujours l'avis de votre médecin pour votre suivi.",
+      "en": "Yes. Its glycaemic index is 0: it does not raise blood sugar. Always ask your doctor about your own care."
+    }
+  },
+  {
+    "id": "gout",
+    "categorie": "produit",
+    "question": {
+      "fr": "Quel goût a SucréBio ?",
+      "en": "What does SucréBio taste like?"
+    },
+    "reponse": {
+      "fr": "Un goût sucré très proche du sucre, sans arrière-goût amer, grâce au fruit du moine.",
+      "en": "A sweet taste very close to sugar, with no bitter aftertaste, thanks to monk fruit."
+    }
+  },
+  {
+    "id": "cuisine",
+    "categorie": "utilisation",
+    "question": {
+      "fr": "Peut-on cuisiner avec ?",
+      "en": "Can I cook with it?"
+    },
+    "reponse": {
+      "fr": "Oui. SucréBio supporte la chaleur : boissons chaudes, bouillies, gâteaux et desserts. Voir <a href=\"produit.html#utilisation\">comment l'utiliser</a>.",
+      "en": "Yes. SucréBio withstands heat: hot drinks, porridge, cakes and desserts. See <a href=\"produit.html#utilisation\">how to use it</a>."
+    }
+  },
+  {
+    "id": "enfants",
+    "categorie": "sante",
+    "question": {
+      "fr": "Les enfants peuvent-ils en consommer ?",
+      "en": "Can children have it?"
+    },
+    "reponse": {
+      "fr": "Oui, c'est une bonne alternative pour limiter le sucre et protéger leurs dents.",
+      "en": "Yes, it is a good way to cut down on sugar and protect their teeth."
+    }
+  },
+  {
+    "id": "boite",
+    "categorie": "produit",
+    "question": {
+      "fr": "Que contient une boîte ?",
+      "en": "What is in a box?"
+    },
+    "reponse": {
+      "fr": "Une boîte contient 100 sticks de 1 g. Un stick suffit pour sucrer une tasse de café ou de thé.",
+      "en": "A box holds 100 sticks of 1 g. One stick is enough to sweeten a cup of coffee or tea."
+    }
+  },
+  {
+    "id": "conservation",
+    "categorie": "produit",
+    "question": {
+      "fr": "Comment conserver SucréBio ?",
+      "en": "How should I store SucréBio?"
+    },
+    "reponse": {
+      "fr": "Dans un endroit frais et sec. La date de durabilité figure sur l'emballage.",
+      "en": "In a cool, dry place. The best-before date is on the packaging."
+    }
+  },
+  {
+    "id": "ou-acheter",
+    "categorie": "commande",
+    "question": {
+      "fr": "Où acheter SucréBio ?",
+      "en": "Where can I buy SucréBio?"
+    },
+    "reponse": {
+      "fr": "En boutique, en grande surface et en livraison à Thiès et Dakar. Voir la page <a href=\"points-de-vente.html\">Points de vente</a>.",
+      "en": "In shops, supermarkets and by delivery in Thiès and Dakar. See the <a href=\"points-de-vente.html\">Points of sale</a> page."
+    }
+  },
+  {
+    "id": "commander",
+    "categorie": "commande",
+    "question": {
+      "fr": "Comment commander ?",
+      "en": "How do I order?"
+    },
+    "reponse": {
+      "fr": "Écrivez-nous sur <a data-wa href=\"#\">WhatsApp au +221 76 142 55 30</a> ou via le <a href=\"contact.html\">formulaire de contact</a>. Livraison au Sénégal.",
+      "en": "Message us on <a data-wa href=\"#\">WhatsApp at +221 76 142 55 30</a> or use the <a href=\"contact.html\">contact form</a>. Delivery in Senegal."
+    }
+  },
+  {
+    "id": "distributeur",
+    "categorie": "commande",
+    "question": {
+      "fr": "Comment devenir distributeur ?",
+      "en": "How do I become a distributor?"
+    },
+    "reponse": {
+      "fr": "Pharmacies, boutiques, supermarchés et grossistes : remplissez la <a href=\"devenir-distributeur.html\">demande de distribution</a>, nous vous recontactons.",
+      "en": "Pharmacies, shops, supermarkets and wholesalers: fill in the <a href=\"devenir-distributeur.html\">distributor application</a> and we will get back to you."
+    }
+  }
+]

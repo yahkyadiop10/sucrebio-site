@@ -1,0 +1,142 @@
+{
+  "fr": {
+    "accueil": "Bonjour 👋 Je suis l’assistant SucréBio. Posez-moi vos questions sur le produit, son utilisation ou la santé.",
+    "suggestions": [
+      "Composition",
+      "Diabète",
+      "Calories",
+      "Utilisation",
+      "Où acheter",
+      "Commander"
+    ],
+    "repli": "Je n’ai pas la réponse exacte. Consultez notre <a href=\"faq.html\">FAQ</a> ou écrivez à notre équipe sur <a data-wa-chat href=\"#\">WhatsApp</a>.",
+    "regles": [
+      {
+        "motifs": "compo|ingr|érythr|erythr|fruit du moine|moine|contient|fabriqu",
+        "reponse": "SucréBio contient deux ingrédients : l’érythritol, un édulcorant naturel issu de la fermentation, et l’extrait de fruit du moine. Rien d’autre. <a href=\"produit.html\">Voir le produit</a>."
+      },
+      {
+        "motifs": "diab|glyc|sang|insul",
+        "reponse": "SucréBio a un index glycémique de 0 : il ne fait pas monter le taux de sucre dans le sang. Il convient aux personnes diabétiques. Demandez toujours conseil à votre médecin pour votre suivi. <a href=\"bienfaits.html#b-diabete\">En savoir plus</a>."
+      },
+      {
+        "motifs": "calor|poids|maigr|régime|regime|kcal",
+        "reponse": "SucréBio apporte 0 calorie. C’est un allié simple pour réduire les calories du sucre sans renoncer au goût sucré."
+      },
+      {
+        "motifs": "dent|carie|sourire",
+        "reponse": "SucréBio ne nourrit pas les bactéries responsables des caries. Il est donc bon pour les dents, même celles des enfants."
+      },
+      {
+        "motifs": "utilis|dose|combien|café|cafe|thé|\\bthe\\b|ataya|cuisin|gâteau|gateau|cuisson|bouillie",
+        "reponse": "Remplacez le sucre par un stick dans votre café, thé ou ataya, puis ajustez selon votre goût. SucréBio supporte la cuisson : bouillies, gâteaux, desserts. <a href=\"produit.html#utilisation\">Mode d’emploi</a>."
+      },
+      {
+        "motifs": "enfant|bébé|bebe|enceinte",
+        "reponse": "Les enfants peuvent consommer SucréBio, c’est une bonne façon de limiter le sucre. Pour les bébés ou pendant la grossesse, demandez l’avis de votre médecin."
+      },
+      {
+        "motifs": "sport|muscu|entraîn|entrain|énergie|energie",
+        "reponse": "Pour les sportifs : le goût sucré sans calories et sans pic de sucre, donc pas de coup de fatigue lié au sucre."
+      },
+      {
+        "motifs": "distribu|revendeur|revendre|grossiste|partenaire",
+        "reponse": "Vous souhaitez vendre SucréBio dans votre commerce ? Remplissez la <a href=\"devenir-distributeur.html\">demande de distribution</a> ou écrivez à <a href=\"mailto:commercial@sucrebio.sn\">commercial@sucrebio.sn</a>, nous vous recontactons rapidement."
+      },
+      {
+        "motifs": "où|ou acheter|trouver|boutique|magasin|supermarch|pharmac",
+        "reponse": "SucréBio est disponible à Thiès et Dakar, en boutique, en grande surface et en livraison. <a href=\"points-de-vente.html\">Voir les points de vente</a>."
+      },
+      {
+        "motifs": "blog|article|recette|actualit|nouvelle",
+        "reponse": "Retrouvez nos conseils et recettes sur le <a href=\"blog.html\">blog</a>, et les nouvelles de la marque dans les <a href=\"actualites.html\">actualités</a>."
+      },
+      {
+        "motifs": "command|achet|prix|coût|cout|livr",
+        "reponse": "Pour commander ou connaître les prix, écrivez-nous sur <a data-wa-chat href=\"#\">WhatsApp au +221 76 142 55 30</a>. Nous livrons au Sénégal."
+      },
+      {
+        "motifs": "goût|gout|amer|saveur",
+        "reponse": "Le goût est très proche du sucre, sans arrière-goût amer, grâce au fruit du moine."
+      },
+      {
+        "motifs": "bonjour|salut|hello|bonsoir|salam",
+        "reponse": "Bonjour ! Que souhaitez-vous savoir sur SucréBio ?"
+      },
+      {
+        "motifs": "merci",
+        "reponse": "Avec plaisir ! N’hésitez pas si vous avez une autre question."
+      }
+    ]
+  },
+  "en": {
+    "accueil": "Hello 👋 I’m the SucréBio assistant. Ask me about the product, how to use it, or health.",
+    "suggestions": [
+      "Ingredients",
+      "Diabetes",
+      "Calories",
+      "How to use",
+      "Where to buy",
+      "Order"
+    ],
+    "repli": "I don’t have the exact answer. See our <a href=\"faq.html\">FAQ</a> or message our team on <a data-wa-chat href=\"#\">WhatsApp</a>.",
+    "regles": [
+      {
+        "motifs": "ingredient|compos|erythr|monk|contain|made of",
+        "reponse": "SucréBio contains two ingredients: erythritol, a natural sweetener from fermentation, and monk fruit extract. Nothing else. <a href=\"produit.html\">See the product</a>."
+      },
+      {
+        "motifs": "diab|glyc|blood|insul",
+        "reponse": "SucréBio has a glycaemic index of 0: it does not raise blood sugar. It is suitable for people with diabetes. Always ask your doctor about your own care. <a href=\"bienfaits.html#b-diabete\">Learn more</a>."
+      },
+      {
+        "motifs": "calor|weight|diet|kcal|slim",
+        "reponse": "SucréBio has 0 calories. It is a simple way to cut the calories from sugar while keeping the sweet taste."
+      },
+      {
+        "motifs": "teeth|tooth|cavit|dental|smile",
+        "reponse": "SucréBio does not feed the bacteria that cause cavities, so it is good for teeth, children’s included."
+      },
+      {
+        "motifs": "\\buse|dose|how much|coffee|tea|ataya|cook|bak|cake|porridge",
+        "reponse": "Replace sugar with one stick in your coffee, tea or ataya, then adjust to taste. SucréBio is heat-stable: porridge, cakes, desserts. <a href=\"produit.html#utilisation\">How to use it</a>."
+      },
+      {
+        "motifs": "child|kid|baby|pregnan",
+        "reponse": "Children can have SucréBio; it is a good way to cut down on sugar. For babies or during pregnancy, ask your doctor."
+      },
+      {
+        "motifs": "sport|gym|train|energy|athlet",
+        "reponse": "For athletes: the sweet taste with no calories and no sugar spike, so no sugar crash."
+      },
+      {
+        "motifs": "distribut|resell|wholesal|partner",
+        "reponse": "Want to sell SucréBio in your shop? Fill in the <a href=\"devenir-distributeur.html\">distributor application</a> or write to <a href=\"mailto:commercial@sucrebio.sn\">commercial@sucrebio.sn</a>, and we will get back to you quickly."
+      },
+      {
+        "motifs": "where|find|shop|store|supermarket|pharmac|stockist",
+        "reponse": "SucréBio is available in Thiès and Dakar, in shops, supermarkets and by delivery. <a href=\"points-de-vente.html\">See points of sale</a>."
+      },
+      {
+        "motifs": "blog|article|recipe|news",
+        "reponse": "Find our tips and recipes on the <a href=\"blog.html\">blog</a>, and brand news in the <a href=\"actualites.html\">news</a> section."
+      },
+      {
+        "motifs": "order|buy|price|cost|deliver",
+        "reponse": "To order or ask about prices, message us on <a data-wa-chat href=\"#\">WhatsApp at +221 76 142 55 30</a>. We deliver in Senegal."
+      },
+      {
+        "motifs": "taste|bitter|flavou?r",
+        "reponse": "It tastes very close to sugar, with no bitter aftertaste, thanks to monk fruit."
+      },
+      {
+        "motifs": "hello|\\bhi\\b|hey|good (morning|evening)|salam",
+        "reponse": "Hello! What would you like to know about SucréBio?"
+      },
+      {
+        "motifs": "thank",
+        "reponse": "You’re welcome! Feel free to ask anything else."
+      }
+    ]
+  }
+}

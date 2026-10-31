@@ -1,0 +1,37 @@
+{
+  "marque": "SucréBio",
+  "raison_sociale": "SN Industrie SARL",
+  "fondateur": "Amadou Tidiane LY",
+  "whatsapp": "221761425530",
+  "telephone_affiche": "+221 76 142 55 30",
+  "email": "info@sucrebio.com",
+  "email_commercial": "commercial@sucrebio.sn",
+  "site": "https://www.sucrebio.com",
+  "adresse": {
+    "fr": "Route de Mbour sur l'autoroute, en face de Thiès Ville Neuve, Thiès, Sénégal",
+    "en": "Route de Mbour on the motorway, opposite Thiès Ville Neuve, Thiès, Senegal"
+  },
+  "ville": "Thiès",
+  "pays": "Sénégal",
+  "rccm": null,
+  "ninea": null,
+  "hebergeur": null,
+  "moyens_paiement": {
+    "confirme": false,
+    "fr": [
+      "Paiement à la livraison",
+      "Wave",
+      "Orange Money"
+    ],
+    "en": [
+      "Cash on delivery",
+      "Wave",
+      "Orange Money"
+    ]
+  },
+  "reseaux_sociaux": {
+    "facebook": null,
+    "instagram": null,
+    "tiktok": null
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "nom": "Aïssatou",
+    "lieu": { "fr": "Dakar", "en": "Dakar" },
+    "texte": { "fr": "« Je surveille ma glycémie et je peux enfin sucrer mon café sans m'inquiéter. »", "en": "“I watch my blood sugar and can finally sweeten my coffee without worrying.”" },
+    "note": 5,
+    "exemple": true,
+    "couleur": "#1a5c32"
+  },
+  {
+    "nom": "Moussa",
+    "lieu": { "fr": "Coach sportif, Thiès", "en": "Fitness coach, Thiès" },
+    "texte": { "fr": "« Je le conseille à mes élèves : le goût sucré sans calories. »", "en": "“I recommend it to my clients: the sweet taste without the calories.”" },
+    "note": 5,
+    "exemple": true,
+    "couleur": "#e8900a"
+  },
+  {
+    "nom": "Fatou",
+    "lieu": { "fr": "Maman, Mbour", "en": "Mother, Mbour" },
+    "texte": { "fr": "« Toute la famille l'utilise, même les enfants. On ne sent pas la différence. »", "en": "“The whole family uses it, even the kids. You can’t tell the difference.”" },
+    "note": 5,
+    "exemple": true,
+    "couleur": "#4d8f24"
+  }
+]
