@@ -1,5 +1,10 @@
 # Historique des versions
 
+## Novembre 2026 · mise en ligne chez LWS
+- Site publié sur l'hébergement LWS (www.sucrebio.com) par GitHub, après contrôle automatique.
+- Formulaire en PHP (`api/formulaire.php`) pour enregistrer les envois dans Neon depuis LWS.
+- `.htaccess` : page 404, HTTPS et www obligatoires.
+
 ## V4.4 · octobre 2026 · deux e-mails, bandes ciblées
 - Deux adresses : info@sucrebio.com (informations, contact général) et commercial@sucrebio.sn (partenariats, distribution), affichées selon la page ; l'assistant donne l'adresse commerciale pour les partenariats.
 - Bandes de photos limitées à 4 pages, chacune avec ses images : À propos (scènes de vie), Bienfaits (déclinaisons du produit), Blog (usages), Actualités (la marque). Retirées de l'Accueil, de Produit, de Points de vente et de Devenir distributeur.

@@ -1,0 +1,30 @@
+# Réglages Apache pour l'hébergement LWS (ignorés par Vercel).
+
+ErrorDocument 404 /404.html
+Options -Indexes
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Une seule adresse : https://www.sucrebio.com (activer le certificat SSL chez LWS avant la mise en ligne).
+  RewriteCond %{HTTP_HOST} ^(www\.)?sucrebio\.com$ [NC]
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://www.sucrebio.com%{REQUEST_URI} [L,R=301]
+  RewriteCond %{HTTP_HOST} ^sucrebio\.com$ [NC]
+  RewriteRule ^ https://www.sucrebio.com%{REQUEST_URI} [L,R=301]
+
+  # Fichiers à ne jamais servir : secret du formulaire, fichiers cachés.
+  RewriteRule ^api/config\.php$ - [F,L]
+  RewriteRule ^\.well-known/ - [L]
+  RewriteRule (^|/)\. - [F,L]
+
+  # Même adresse que sur Vercel pour le formulaire.
+  RewriteRule ^api/formulaire/?$ api/formulaire.php [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

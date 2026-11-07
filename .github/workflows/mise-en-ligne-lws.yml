@@ -1,0 +1,60 @@
+# Envoie le site sur l'hébergement LWS (www.sucrebio.com) à chaque modification fusionnée dans main.
+# Le site est d'abord contrôlé : en cas d'erreur, rien n'est envoyé.
+# Secrets à créer dans GitHub (Settings > Secrets and variables > Actions) :
+#   FTP_SERVEUR, FTP_UTILISATEUR, FTP_MOT_DE_PASSE, FTP_DOSSIER (ex. /htdocs/), DATABASE_URL
+name: Mise en ligne LWS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: mise-en-ligne-lws
+  cancel-in-progress: false
+
+jobs:
+  envoyer:
+    runs-on: ubuntu-latest
+    env:
+      FTP_PRET: ${{ secrets.FTP_SERVEUR != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Contrôler le site
+        run: |
+          python3 outils/generer-donnees.py
+          git diff --exit-code assets/js/donnees.js || { echo "::error::donnees.js n'est pas à jour : lancer python3 outils/generer-donnees.py"; exit 1; }
+          python3 outils/verifier-site.py
+          php -l api/formulaire.php
+
+      - name: Préparer les fichiers à publier
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          mkdir _publier
+          rsync -a ./ _publier/ \
+            --exclude '.git*' --exclude '_publier' --exclude 'archives/' --exclude 'docs/' \
+            --exclude 'outils/' --exclude 'neon/' --exclude 'node_modules/' \
+            --exclude 'package.json' --exclude 'package-lock.json' --exclude 'vercel.json' \
+            --exclude '.vercelignore' --exclude 'api/formulaire.js' --exclude 'CLAUDE.md' --exclude 'README.md'
+          if [ -z "$DATABASE_URL" ]; then echo "::warning::Secret DATABASE_URL absent : les formulaires ne seront pas enregistrés dans Neon"; else
+            php -r 'file_put_contents("_publier/api/config.php", "<?php\nreturn " . var_export(["database_url" => getenv("DATABASE_URL")], true) . ";\n");'
+          fi
+          find _publier -type f | sort
+
+      - name: Signaler les accès FTP manquants
+        if: env.FTP_PRET != 'true'
+        run: |
+          echo "::warning::Secrets FTP absents, site contrôlé mais pas envoyé sur LWS"
+
+      - name: Envoyer sur LWS
+        if: env.FTP_PRET == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVEUR }}
+          username: ${{ secrets.FTP_UTILISATEUR }}
+          password: ${{ secrets.FTP_MOT_DE_PASSE }}
+          server-dir: ${{ secrets.FTP_DOSSIER }}
+          local-dir: ./_publier/
+          protocol: ftps

@@ -21,7 +21,7 @@ Site vitrine statique, bilingue FR/EN, de SucréBio (édulcorant naturel, SN Ind
 - Données : `base-de-donnees/*.json` = source de vérité. Les pages lisent `assets/js/donnees.js` (`window.SB_DATA`), **généré** par `python3 outils/generer-donnees.py` : ne pas l'éditer à la main. Ce détour existe parce que `fetch()` est bloqué quand on ouvre les pages en `file://`.
 - Zones remplies par le JS : `data-render="temoignages|faq|villes|revendeurs|produit|entreprise|publications|article|bandeau|videos"` (`publications` accepte `data-type="blog|actualite"` et `data-limit`) ; textes liés aux coordonnées : `data-bind="telephone_affiche|email"`.
 - Liens WhatsApp : tout élément `data-wa` reçoit `https://wa.me/<entreprise.whatsapp>` au chargement.
-- Formulaires (contact, demande de distribution) : pas de serveur, ils ouvrent WhatsApp avec le message prérempli (libellés des champs + valeurs). `contact.html?sujet=distributeur` présélectionne le sujet (valeurs : commande, distributeur, produit, partenariat).
+- Formulaires (contact, demande de distribution) : ils ouvrent WhatsApp avec le message prérempli (libellés des champs + valeurs) et envoient une copie à `/api/formulaire`, enregistrée dans Neon (`api/formulaire.php` sur LWS, `api/formulaire.js` sur Vercel : garder les deux identiques). `contact.html?sujet=distributeur` présélectionne le sujet (valeurs : commande, distributeur, produit, partenariat).
 - Bandes de photos défilantes (`bandeau`, données `galerie.json`, une liste par page) **uniquement** sur À propos, Bienfaits, Blog, Actualités (choix du client) ; espace vidéo (`videos`, données `videos.json`, attribut `data-page="accueil|produit"`) ; `source: null` = « Vidéo à venir ». Toute animation doit s'arrêter avec `prefers-reduced-motion` et avoir une pause.
 - Photos générées par IA : ne pas les afficher en grand (textes d'emballage déformés).
 - Deux e-mails : `email` = info@sucrebio.com (informations, contact général), `email_commercial` = commercial@sucrebio.sn (partenariats, distribution).
@@ -42,4 +42,4 @@ Ne pas livrer si le vérificateur signale une erreur.
 - Rédaction en français, phrases courtes ; chaque texte a sa version anglaise.
 
 ## Documentation
-`docs/architecture.md` (pages et liens), `docs/base-de-donnees.md` (schémas JSON), `docs/charte-graphique.md`, `docs/a-completer.md` (contenus provisoires), `docs/mise-en-ligne.md`, `docs/historique.md`.
+`docs/architecture.md` (pages et liens), `docs/base-de-donnees.md` (schémas JSON), `docs/charte-graphique.md`, `docs/a-completer.md` (contenus provisoires), `docs/mise-en-ligne.md` (LWS, Vercel, Neon), `docs/historique.md`.
