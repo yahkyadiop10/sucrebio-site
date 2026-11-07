@@ -4,3 +4,6 @@ outils/
 neon/
 CLAUDE.md
 README.md
+.github/
+.htaccess
+api/formulaire.php
