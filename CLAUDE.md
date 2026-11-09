@@ -34,7 +34,10 @@ Site vitrine statique, bilingue FR/EN, de SucréBio (édulcorant naturel, SN Ind
 ```bash
 python3 outils/generer-donnees.py   # si un JSON a changé
 python3 outils/verifier-site.py     # liens, ancres, traductions, données, règle érythritol
+python3 outils/tester-formulaire.py # si api/*.php a changé
+node outils/tester-navigateur.mjs   # chaque page dans Chromium, FR/EN, ordinateur/téléphone
 ```
+Ces contrôles tournent aussi seuls sur chaque pull request ; le site en ligne est surveillé toutes les heures (voir `docs/mise-en-ligne.md`).
 Ne pas livrer si le vérificateur signale une erreur.
 
 ## Conventions

@@ -26,7 +26,8 @@ jobs:
           python3 outils/generer-donnees.py
           git diff --exit-code assets/js/donnees.js || { echo "::error::donnees.js n'est pas à jour : lancer python3 outils/generer-donnees.py"; exit 1; }
           python3 outils/verifier-site.py
-          php -l api/formulaire.php
+          for f in api/*.php; do php -l "$f"; done
+          python3 outils/tester-formulaire.py
 
       - name: Préparer les fichiers à publier
         env:
@@ -58,3 +59,9 @@ jobs:
           server-dir: ${{ secrets.FTP_DOSSIER }}
           local-dir: ./_publier/
           protocol: ftps
+
+      - name: Vérifier le site en ligne après l'envoi
+        if: env.FTP_PRET == 'true'
+        run: |
+          sleep 20
+          bash outils/surveiller-site.sh https://www.sucrebio.com

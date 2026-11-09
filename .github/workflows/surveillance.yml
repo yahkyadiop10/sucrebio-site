@@ -1,0 +1,54 @@
+# Surveille le site en ligne (www.sucrebio.com) toutes les heures.
+# En cas de problème, un ticket « Site en panne » est ouvert dans l'onglet Issues et assigné à yahkyadiop10
+# (GitHub envoie un e-mail). Le ticket est fermé automatiquement quand tout redevient normal.
+name: Surveillance du site
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: surveillance
+  cancel-in-progress: false
+
+jobs:
+  surveiller:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Vérifier le site en ligne
+        id: controle
+        run: |
+          set -o pipefail
+          bash outils/surveiller-site.sh https://www.sucrebio.com | tee rapport.txt
+
+      - name: Ouvrir un ticket d'alerte
+        if: failure() && steps.controle.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LIEN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh label create surveillance --color B60205 --description "Alerte automatique de la surveillance du site" 2>/dev/null || true
+          corps="$(printf 'La surveillance automatique a détecté un problème sur https://www.sucrebio.com.\n\n```\n%s\n```\n\nDétail : %s\n\nCe ticket se fermera tout seul quand le site sera de nouveau en bonne santé.' "$(cat rapport.txt)" "$LIEN")"
+          ticket=$(gh issue list --label surveillance --state open --json number --jq '.[0].number')
+          if [ -n "$ticket" ]; then
+            gh issue comment "$ticket" --body "$corps"
+          else
+            gh issue create --title "Site en panne : www.sucrebio.com" --label surveillance --assignee yahkyadiop10 --body "$corps"
+          fi
+
+      - name: Fermer le ticket si tout va bien
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for t in $(gh issue list --label surveillance --state open --json number --jq '.[].number'); do
+            gh issue close "$t" --comment "Le site répond de nouveau normalement. $(date -u '+%d/%m/%Y %H:%M') UTC"
+          done
