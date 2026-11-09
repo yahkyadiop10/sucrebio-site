@@ -1,0 +1,33 @@
+# Contrôle automatique de chaque proposition de modification (pull request), avant fusion dans main.
+# Si une case est rouge, ne pas fusionner : la modification casse quelque chose.
+name: Contrôle du site
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  controler:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Données, liens, traductions, règles de marque
+        run: |
+          python3 outils/generer-donnees.py
+          git diff --exit-code assets/js/donnees.js || { echo "::error::donnees.js n'est pas à jour : lancer python3 outils/generer-donnees.py"; exit 1; }
+          python3 outils/verifier-site.py
+
+      - name: Code PHP du formulaire
+        run: |
+          for f in api/*.php; do php -l "$f"; done
+          python3 outils/tester-formulaire.py
+
+      - name: Préparer le navigateur
+        run: |
+          npm install --no-save --no-package-lock playwright@1
+          npx playwright install --with-deps chromium
+
+      - name: Chaque page dans un vrai navigateur (FR/EN, ordinateur/téléphone)
+        run: node outils/tester-navigateur.mjs

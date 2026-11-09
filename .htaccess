@@ -24,6 +24,8 @@ AddDefaultCharset UTF-8
 
   # Même adresse que sur Vercel pour le formulaire.
   RewriteRule ^api/formulaire/?$ api/formulaire.php [L]
+  RewriteRule ^api/sante/?$ api/sante.php [L]
+  RewriteRule ^api/neon\.php$ - [F,L]
 </IfModule>
 
 <IfModule mod_headers.c>

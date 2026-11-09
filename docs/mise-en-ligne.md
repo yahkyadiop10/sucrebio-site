@@ -43,3 +43,19 @@ Le dossier fonctionne tel quel sur n'importe quel hébergement de fichiers (Netl
 - **Ordre de mise en route :** 1. activer le certificat SSL gratuit (Let's Encrypt) dans l'espace LWS ; 2. créer les secrets GitHub ; 3. fusionner ou lancer le workflow ; 4. tester une page, l'anglais, la 404 et un envoi de formulaire, puis vérifier la ligne dans Neon.
 - **Vercel** reste branché au dépôt : il sert aux aperçus avant fusion (`sucrebio-git-<branche>-digitalab2.vercel.app`).
 - **E-mails :** ne jamais modifier les enregistrements MX de la zone DNS chez LWS (ils font marcher info@sucrebio.com).
+
+## Tests et surveillance (depuis le 09/11/2026)
+Trois protections automatiques, visibles dans l'onglet **Actions** de GitHub :
+
+1. **Avant chaque fusion** (`.github/workflows/controle.yml`, sur chaque pull request) : vérificateur du site, contrôle du PHP, test du formulaire (`outils/tester-formulaire.py` : refus des envois invalides, réponse sans clé Neon), puis chaque page ouverte dans un vrai navigateur, en français et en anglais, sur ordinateur et sur téléphone (`outils/tester-navigateur.mjs` : erreurs JavaScript, fichiers manquants, zones de données vides, débordement horizontal). Case rouge = ne pas fusionner.
+2. **À chaque mise en ligne** (`mise-en-ligne-lws.yml`) : les mêmes contrôles rapides avant l'envoi (rien n'est envoyé en cas d'erreur), puis vérification du site en ligne juste après.
+3. **Toutes les heures** (`surveillance.yml`) : `outils/surveiller-site.sh` vérifie l'accueil (le site, pas l'ancien WordPress), les pages principales, les fichiers CSS/JS, la vraie erreur 404, la redirection `http://sucrebio.com` → `https://www.sucrebio.com`, la protection de `api/config.php`, le bilan `/api/sante` (PHP + Neon, sans rien écrire) et la validité du certificat SSL (au moins 14 jours). En cas de problème, un ticket « Site en panne » est ouvert dans **Issues** et assigné à yahkyadiop10 (e-mail de GitHub) ; il se ferme tout seul au retour à la normale.
+
+À savoir : GitHub met en pause les tâches programmées d'un dépôt sans aucune modification pendant 60 jours (il prévient par e-mail ; un clic sur « Enable workflow » suffit). Les tâches horaires peuvent avoir quelques minutes de retard.
+
+En local :
+```bash
+python3 outils/tester-formulaire.py            # formulaire PHP (php requis)
+node outils/tester-navigateur.mjs              # navigateur (Playwright requis)
+bash outils/surveiller-site.sh                 # site en ligne
+```

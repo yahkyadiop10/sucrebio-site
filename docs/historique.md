@@ -4,6 +4,7 @@
 - Site publié sur l'hébergement LWS (www.sucrebio.com) par GitHub, après contrôle automatique.
 - Formulaire en PHP (`api/formulaire.php`) pour enregistrer les envois dans Neon depuis LWS.
 - `.htaccess` : page 404, HTTPS et www obligatoires.
+- Tests et surveillance : contrôle de chaque pull request (formulaire, navigateur FR/EN, ordinateur/téléphone), vérification après chaque mise en ligne, surveillance horaire du site en ligne avec ticket d'alerte (`/api/sante`).
 
 ## V5 · 31 octobre 2026 · ton de grande marque, finition premium
 - Ton marketing bien-être : SucréBio au centre, associé à un bienfait ressenti (légèreté, plaisir, énergie, sourire). Plus de vocabulaire médical dans les titres et accroches ; les ingrédients sont nommés sur la page Produit et dans la FAQ.

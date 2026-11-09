@@ -7,3 +7,5 @@ README.md
 .github/
 .htaccess
 api/formulaire.php
+api/neon.php
+api/sante.php
