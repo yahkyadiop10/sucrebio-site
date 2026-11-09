@@ -1,5 +1,7 @@
 # Réglages Apache pour l'hébergement LWS (ignorés par Vercel).
 
+# Page d'accueil du site statique, avant l'index.php de l'ancien WordPress resté dans htdocs.
+DirectoryIndex index.html index.php
 ErrorDocument 404 /404.html
 Options -Indexes
 AddDefaultCharset UTF-8
