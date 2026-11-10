@@ -6,7 +6,7 @@
 |---|---|---|---|
 | 1 | Vrais avis clients (avec accord), puis `exemple: false` | `base-de-donnees/temoignages.json` | ⚙ exemples affichés |
 | 2 | Numéros RCCM et NINEA | `entreprise.json` (`rccm`, `ninea`) + texte de `mentions-legales.html` | ⚙ à compléter |
-| 3 | Nom et adresse de l'hébergeur | `entreprise.json` (`hebergeur`) + `mentions-legales.html` | ⚙ à compléter |
+| 3 | Hébergeur : LWS renseigné ; adresse du siège à compléter (voir facture LWS) | `entreprise.json` (`hebergeur`) + `mentions-legales.html` | ⚙ adresse à compléter |
 | 4 | Moyens de paiement définitifs | `cgv.html` (+ EN dans `i18n-en.js`, clé `lgl_cgv`), puis `confirme: true` dans `entreprise.json` | ⚙ à confirmer |
 | 5 | Liste des revendeurs | `points-de-vente.json` (`revendeurs`) | ⚙ vide |
 | 6 | Villes du déploiement (Mbour, Saint-Louis, Touba, Afrique de l'Ouest) | `points-de-vente.json` (`villes`) | à valider |
