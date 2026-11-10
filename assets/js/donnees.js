@@ -159,7 +159,7 @@ window.SB_DATA = {
   "pays": "Sénégal",
   "rccm": null,
   "ninea": null,
-  "hebergeur": null,
+  "hebergeur": "LWS (Ligne Web Services) SAS, RCS Paris B 851 993 683, www.lws.fr (adresse du siège à compléter)",
   "moyens_paiement": {
    "confirme": false,
    "fr": [
