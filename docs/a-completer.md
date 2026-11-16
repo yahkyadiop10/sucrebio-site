@@ -17,6 +17,7 @@
 | 11 | Validation des allégations santé (IG 0, dents) | Bienfaits, FAQ, articles | à faire relire |
 | 12 | Articles du blog et actualités : relire, dater, puis `exemple: false` (ou remplacer) | `base-de-donnees/publications.json` | ⚙ 4 exemples publiés |
 | 13 | Conditions de distribution (ce qui est promis aux distributeurs) | `devenir-distributeur.html` | à valider |
+| 15 | Photos authentiques du laboratoire : matériel et instruments de mesure, prélèvements, essais, équipements de conditionnement (pas d'images génériques) | `qualite-et-maitrise.html` (liste `.lab-grid`) + `assets/img/` | 4 emplacements « Photo à venir » |
 | 14 | Vidéos (présentation, cuisine, événements) : renseigner `source` | `base-de-donnees/videos.json` (+ fichiers MP4 dans `assets/videos/`) | ⚙ 3 emplacements « Vidéo à venir » |
 | 15 | Photos manquantes pour les bandes : au bureau (À propos), thé à la sénégalaise et petit-déjeuner (Bienfaits), visuel propre de la boîte | `assets/img/` + `base-de-donnees/galerie.json` | à fournir |
 | 16 | Vraies photos (les mises en situation actuelles sont générées par IA) | `assets/img/scene-*.webp`, `galerie.json` | facultatif |

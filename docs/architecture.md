@@ -4,8 +4,11 @@
 
 ```
 Accueil (index.html)
-├── À propos (a-propos.html)
-├── Produit (produit.html)            #utilisation = mode d'emploi
+├── Notre produit (produit.html)      #utilisation = mode d'emploi
+├── À propos (menu déroulant)
+│   ├── Qui sommes-nous (a-propos.html)
+│   ├── Qualité et maîtrise (qualite-et-maitrise.html)   parcours qualité en 5 étapes, photos du laboratoire
+│   └── Nos engagements (nos-engagements.html)
 ├── Bienfaits (bienfaits.html)        avantages, profils #b-diabete #b-sport #b-dents #b-poids, comparatif
 ├── Partenaires (menu déroulant)
 │   ├── Points de vente (points-de-vente.html)
@@ -15,7 +18,7 @@ Accueil (index.html)
 │   ├── Actualités (actualites.html)
 │   └── Article (article.html?id=<id>)   une page pour toutes les publications
 ├── Contact (menu déroulant)
-│   ├── Nous contacter (contact.html)   ?sujet=commande|distributeur|produit|partenariat
+│   ├── Nous contacter (contact.html)   #formulaire ?sujet=produit|commande (informations commerciales)|distributeur|partenariat
 │   └── FAQ (faq.html)                 #q-<id> = une question (ex. faq.html#q-diabete)
 └── Informations
     ├── Mentions légales (mentions-legales.html)
@@ -26,10 +29,10 @@ Accueil (index.html)
 ```
 
 ## Liens présents sur chaque page
-- **En-tête**, dans cet ordre : Accueil, À propos, Produit, Bienfaits, **Partenaires ▾** (Points de vente, Devenir distributeur), **Publications ▾** (Blog, Actualités), **Contact ▾** (Nous contacter, FAQ) ; le logo mène aussi à l'Accueil ; FR/EN ; bouton « Commander » (WhatsApp). Les menus s'ouvrent au survol (souris) ou au clic (tactile, clavier) ; Échap les ferme. Le menu parent de la page en cours est surligné (`class="dd is-current"`).
-- **Menu mobile** : les mêmes liens dans le même ordre, les sous-pages regroupées sous les intitulés Partenaires, Publications et Contact.
+- **En-tête**, dans cet ordre : Accueil, Notre produit, **À propos ▾** (Qui sommes-nous, Qualité et maîtrise, Nos engagements), Bienfaits, **Partenaires ▾** (Points de vente, Devenir distributeur), **Publications ▾** (Blog, Actualités), **Contact ▾** (Nous contacter, FAQ) ; le logo mène aussi à l'Accueil ; FR/EN ; bouton « Commander » (WhatsApp). Les menus s'ouvrent au survol (souris) ou au clic (tactile, clavier) ; Échap les ferme. Le menu parent de la page en cours est surligné (`class="dd is-current"`).
+- **Menu mobile** : les mêmes liens dans le même ordre, les sous-pages regroupées sous les intitulés À propos, Partenaires, Publications et Contact.
 - **Fil d'Ariane** (pages intérieures) : Accueil / Page.
-- **Pied de page** : toutes les pages du site (colonnes Navigation, Partenaires, Publications ; FAQ et Contact dans Navigation), les 4 pages légales, WhatsApp, e-mail, mode sombre.
+- **Pied de page** (contenu éditorial de novembre 2026) : « SucréBio — Le plaisir de sucrer autrement. », Navigation (Accueil, Notre produit, À propos, Qualité et maîtrise, Nos engagements, Contact), coordonnées (e-mail, téléphone s'il est renseigné, Thiès), mode sombre, « © SucréBio — Tous droits réservés. », Mentions légales et Politique de confidentialité. CGV et Livraison restent accessibles depuis les pages légales.
 - **Boutons flottants** : retour en haut, assistant, WhatsApp.
 
 ## Liens entre les pages (parcours)
@@ -83,5 +86,5 @@ Pas besoin de créer de page : ajoutez une entrée dans `base-de-donnees/publica
 ## Ajouter une page
 1. Copier une page intérieure (par ex. `bienfaits.html`) sous un nouveau nom.
 2. Changer `<title>`, meta description, canonical, `data-page`, les clés `pt_`/`pd_`, le fil d'Ariane et le contenu de `<main>`.
-3. Ajouter le lien dans l'en-tête (lien simple ou dans un menu déroulant `.dd__menu`), le menu mobile et le pied de page **des 16 pages**, et dans `sitemap.xml`.
+3. Ajouter le lien dans l'en-tête (lien simple ou dans un menu déroulant `.dd__menu`), le menu mobile et le pied de page **des 18 pages**, et dans `sitemap.xml`.
 4. Ajouter les traductions dans `i18n-en.js`, puis lancer `python3 outils/verifier-site.py`.
