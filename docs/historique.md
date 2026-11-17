@@ -1,5 +1,13 @@
 # Historique des versions
 
+## Novembre 2026 · nouveau contenu éditorial (V6)
+- Textes validés par SucréBio appliqués à l'Accueil, Notre produit, À propos, Contact et au pied de page commun.
+- Deux nouvelles pages : Qualité et maîtrise (parcours en 5 étapes, emplacements pour les photos du laboratoire) et Nos engagements.
+- Menu : « Produit » devient « Notre produit » ; « À propos » devient un menu (Qui sommes-nous, Qualité et maîtrise, Nos engagements).
+- Formulaire de contact : Nom et prénom, Entreprise (facultatif), Adresse e-mail, Téléphone, Objet, Message ; bouton « Envoyer mon message ».
+- Coordonnées pilotées par `entreprise.json` : une valeur `null` masque l'adresse, le téléphone, WhatsApp ou un réseau social. Sans numéro WhatsApp, les formulaires envoient seulement vers `/api/formulaire`.
+- Retirés de l'Accueil et du Produit : chiffres « 0 sucre / 0 calorie », tableau comparatif, cartes « Pour qui ? », avis d'exemple, aperçu des publications.
+
 ## Novembre 2026 · mise en ligne chez LWS
 - Site publié sur l'hébergement LWS (www.sucrebio.com) par GitHub, après contrôle automatique.
 - Formulaire en PHP (`api/formulaire.php`) pour enregistrer les envois dans Neon depuis LWS.

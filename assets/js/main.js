@@ -5,7 +5,7 @@
   const D = window.SB_DATA || {};
   const EN = window.SB_EN || {};
   const ENT = D.entreprise || {};
-  const WA_NUMBER = ENT.whatsapp || '221761425530';
+  const WA_NUMBER = ENT.whatsapp || ''; /* vide ou null dans entreprise.json : liens et boutons WhatsApp masqués */
   const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const store = { get(k){ try { return localStorage.getItem(k); } catch { return null; } }, set(k,v){ try { localStorage.setItem(k,v); } catch {} } };
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
@@ -24,6 +24,8 @@
          sent:'WhatsApp s’ouvre avec votre message.', check:'Merci de corriger les champs en rouge.', waMsg:'Bonjour, je souhaite en savoir plus sur SucréBio', formIntro:'Nouveau message depuis le site SucréBio',
          status:{ disponible:'Disponible', bientot:'Bientôt', prochaine_etape:'Prochaine étape' },
          prod:{ format:'Format', ingredients:'Ingrédients', conservation:'Conservation', origine:'Origine', prix:'Prix', surDemande:'Sur demande, par WhatsApp' },
+         coord:{ addr:'Adresse professionnelle', tel:'Téléphone', wa:'WhatsApp', waTxt:'Écrire sur WhatsApp', mail:'Adresse e-mail', social:'Réseaux sociaux' },
+         company:'Entreprise', sentDirect:'Merci, votre message a bien été envoyé.', sendErr:'Envoi impossible pour le moment. Écrivez-nous à info@sucrebio.com.',
          ent:{ rs:'Raison sociale', marque:'Marque', fondateur:'Fondateur', adresse:'Siège', tel:'Téléphone / WhatsApp', email:'E-mail', rccm:'RCCM', ninea:'NINEA', todo:'à compléter' },
          rsEmpty:'La liste détaillée de nos revendeurs arrive bientôt. En attendant, demandez-nous le point de vente le plus proche de chez vous.', rsAsk:'Demander sur WhatsApp', rsJoin:'Devenir distributeur', formIntroDist:'Demande de distribution depuis le site SucréBio',
          pub:{ blog:'Blog', actualite:'Actualité', exemple:'Exemple', read:'Lire la suite →', empty:'Aucune publication pour le moment.', back:'← Toutes les publications', backBlog:'← Retour au blog', backNews:'← Retour aux actualités', missing:'Cette publication est introuvable.', others:'À lire aussi', home:'Accueil', pubs:'Publications' },
@@ -38,6 +40,8 @@
          sent:'WhatsApp is opening with your message.', check:'Please fix the fields in red.', waMsg:'Hello, I would like to know more about SucréBio', formIntro:'New message from the SucréBio website',
          status:{ disponible:'Available', bientot:'Coming soon', prochaine_etape:'Next step' },
          prod:{ format:'Format', ingredients:'Ingredients', conservation:'Storage', origine:'Origin', prix:'Price', surDemande:'On request, via WhatsApp' },
+         coord:{ addr:'Business address', tel:'Phone', wa:'WhatsApp', waTxt:'Message us on WhatsApp', mail:'Email address', social:'Social media' },
+         company:'Company', sentDirect:'Thank you, your message has been sent.', sendErr:'Sending failed for now. Please write to info@sucrebio.com.',
          ent:{ rs:'Company name', marque:'Brand', fondateur:'Founder', adresse:'Head office', tel:'Phone / WhatsApp', email:'Email', rccm:'RCCM', ninea:'NINEA', todo:'to be completed' },
          rsEmpty:'Our detailed list of resellers is coming soon. In the meantime, ask us for the nearest point of sale.', rsAsk:'Ask on WhatsApp', rsJoin:'Become a distributor', formIntroDist:'Distributor application from the SucréBio website',
          pub:{ blog:'Blog', actualite:'News', exemple:'Example', read:'Read more →', empty:'No publications yet.', back:'← All publications', backBlog:'← Back to the blog', backNews:'← Back to the news', missing:'This publication could not be found.', others:'Read also', home:'Home', pubs:'Publications' },
@@ -54,8 +58,10 @@
   const L = obj => (obj && typeof obj === 'object' && !Array.isArray(obj)) ? (obj[lang] ?? obj.fr ?? '') : (obj ?? '');
   const waLink = (msg) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg ?? UI[lang].waMsg)}`;
   const wireWa = (root = document) => {
-    $$('[data-wa]', root).forEach(a => { a.href = waLink(); a.target = '_blank'; a.rel = 'noopener'; });
-    $$('[data-wa-chat]', root).forEach(a => { a.href = waLink(); a.target = '_blank'; a.rel = 'noopener'; });
+    $$('[data-wa], [data-wa-chat]', root).forEach(a => {
+      if (!WA_NUMBER) { ((a.closest('.footer') && a.closest('li')) || a).hidden = true; return; }
+      a.href = waLink(); a.target = '_blank'; a.rel = 'noopener';
+    });
   };
 
   /* ---------- Rendus à partir de la base de données ---------- */
@@ -124,7 +130,7 @@
         + row(P.ingredients, (p.ingredients || []).map(i => esc(L(i))).join('<br>'))
         + row(P.conservation, esc(L(p.conservation)))
         + row(P.origine, esc(L(p.origine)))
-        + row(P.prix, p.prix_xof ? `${Number(p.prix_xof).toLocaleString(lang === 'en' ? 'en' : 'fr')} F CFA` : `<a data-wa href="#">${P.surDemande}</a>`);
+        + row(P.prix, p.prix_xof ? `${Number(p.prix_xof).toLocaleString(lang === 'en' ? 'en' : 'fr')} F CFA` : (WA_NUMBER ? `<a data-wa href="#">${P.surDemande}</a>` : `<a href="contact.html?sujet=commande#formulaire">${P.surDemande.split(',')[0]}</a>`));
     },
     publications(el){
       const P = UI[lang].pub, type = el.dataset.type, limit = +el.dataset.limit || Infinity;
@@ -204,12 +210,26 @@
         e.currentTarget.parentElement.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(ytId)}?autoplay=1&rel=0" title="${esc(L(v.titre))}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
       });
     },
+    /* Coordonnées (contact.html) : seules les valeurs renseignées dans entreprise.json sont affichées. */
+    coordonnees(el){
+      const C = UI[lang].coord, rows = [];
+      const row = (href, ico, o, label, val, ext, style) => `<${href ? `a href="${href}"${ext ? ' target="_blank" rel="noopener"' : ''}` : 'div'} class="info-row"><span class="ico${o ? ' ico--o' : ''}"${style ? ` style="${style}"` : ''}><svg aria-hidden="true"><use href="#i-${ico}"/></svg></span><div><small>${label}</small><span>${val}</span></div></${href ? 'a' : 'div'}>`;
+      const adr = L(ENT.adresse);
+      if (adr) rows.push(row(`https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(adr)}`, 'pin', false, C.addr, esc(adr), true));
+      if (ENT.telephone_affiche) rows.push(row(`tel:+${String(ENT.telephone_affiche).replace(/\D/g, '')}`, 'phone', true, C.tel, esc(ENT.telephone_affiche)));
+      if (ENT.email) rows.push(row(`mailto:${esc(ENT.email)}`, 'mail', false, C.mail, esc(ENT.email)));
+      if (WA_NUMBER) rows.push(row(waLink(), 'wa', false, C.wa, C.waTxt, true, 'background:#dcf8e7;color:#128c4a'));
+      const NAMES = { facebook:'Facebook', instagram:'Instagram', tiktok:'TikTok', linkedin:'LinkedIn', youtube:'YouTube' };
+      Object.entries(ENT.reseaux_sociaux || {}).filter(([, u]) => u && /^https:\/\//.test(u))
+        .forEach(([k, u]) => rows.push(row(esc(u), 'globe', true, C.social, NAMES[k] || esc(k), true)));
+      el.innerHTML = rows.join('');
+    },
     entreprise(el){
       const E = UI[lang].ent, todo = `<span class="todo">${E.todo}</span>`;
       const row = (k, v) => `<div><dt>${k}</dt><dd>${v}</dd></div>`;
       el.innerHTML = row(E.rs, esc(ENT.raison_sociale)) + row(E.marque, esc(ENT.marque)) + row(E.fondateur, esc(ENT.fondateur))
         + row(E.adresse, esc(L(ENT.adresse)))
-        + row(E.tel, `<a data-wa href="#">${esc(ENT.telephone_affiche)}</a>`)
+        + (ENT.telephone_affiche ? row(E.tel, WA_NUMBER ? `<a data-wa href="#">${esc(ENT.telephone_affiche)}</a>` : esc(ENT.telephone_affiche)) : '')
         + row(E.email, `<a href="mailto:${esc(ENT.email)}">${esc(ENT.email)}</a>`)
         + row(E.rccm, ENT.rccm ? esc(ENT.rccm) : todo) + row(E.ninea, ENT.ninea ? esc(ENT.ninea) : todo);
     }
@@ -225,7 +245,7 @@
   }
   function renderAll(){
     $$('[data-render]').forEach(el => { const f = RENDER[el.dataset.render]; if (f) { try { f(el); } catch (e) { console.error('Rendu', el.dataset.render, e); } } });
-    $$('[data-bind]').forEach(el => { const v = ENT[el.dataset.bind]; if (!v) return; el.textContent = L(v); const a = el.closest('a[href^="mailto:"]'); if (a && /^email/.test(el.dataset.bind)) a.href = 'mailto:' + v; });
+    $$('[data-bind]').forEach(el => { const v = ENT[el.dataset.bind]; if (!v) { (el.closest('li') || el).hidden = true; return; } el.textContent = L(v); const a = el.closest('a[href^="mailto:"]'); if (a && /^email/.test(el.dataset.bind)) a.href = 'mailto:' + v; });
   }
 
   function applyLang(l){
@@ -326,8 +346,9 @@
   const toast = $('#toast'); let toastTimer;
   function showToast(msg){ toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 3800); }
 
-  /* ---------- Formulaires -> WhatsApp (contact.html, devenir-distributeur.html) ----------
-     Pas de serveur : le message est préparé puis ouvert dans WhatsApp. */
+  /* ---------- Formulaires (contact.html, devenir-distributeur.html) ----------
+     Le message s'ouvre dans WhatsApp (si un numéro est renseigné) et une copie part vers /api/formulaire (Neon).
+     Sans numéro WhatsApp, seul l'envoi vers /api/formulaire a lieu. */
   const labelOf = el => { const l = el.labels?.[0]?.cloneNode(true); if (!l) return el.name; $$('.opt', l).forEach(o => o.remove()); return l.textContent.trim(); };
   function validate(el){
     const E = UI[lang].err, v = el.value.trim(); let msg = '';
@@ -341,6 +362,13 @@
     const err = el.parentElement.querySelector('.err'); if (err) err.textContent = msg;
     return !msg;
   }
+  /* Liens « data-sujet » : présélectionnent l'objet du formulaire de la page, sans la recharger */
+  $$('a[data-sujet]').forEach(l => l.addEventListener('click', e => {
+    const sel = $('#contactForm select[name="subject"]'); if (!sel) return;
+    e.preventDefault(); sel.value = l.dataset.sujet; validate(sel);
+    $('#formulaire').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    $('#f-name').focus({ preventScroll:true });
+  }));
   $$('#contactForm, [data-wa-form]').forEach(form => {
     const sujet = new URLSearchParams(location.search).get('sujet');
     const subj = $('select[name="subject"]', form);
@@ -358,15 +386,18 @@
         .map(f => `${labelOf(f)} : ${f.tagName === 'SELECT' ? f.selectedOptions[0].textContent : f.value.trim()}`);
       const msg = $('[name="message"]', form)?.value.trim();
       const text = `${UI[lang][form.dataset.intro || 'formIntro']}\n\n${lines.join('\n')}${msg ? `\n\n${msg}` : ''}`;
-      window.open(waLink(text), '_blank', 'noopener');
+      if (WA_NUMBER) window.open(waLink(text), '_blank', 'noopener');
       // Copie dans la base Neon (site en ligne seulement ; un échec ne bloque pas l'envoi WhatsApp).
-      if (location.protocol.startsWith('http')) {
-        const data = Object.fromEntries(new FormData(form));
-        data.formulaire = form.id === 'distribForm' ? 'distributeur' : 'contact';
-        data.langue = lang;
-        fetch('/api/formulaire', { method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify(data), keepalive:true }).catch(() => {});
-      }
-      showToast(UI[lang].sent);
+      // L'entreprise (facultative) est placée en tête du message : la table messages_contact n'a pas de colonne dédiée.
+      const { company, ...data } = Object.fromEntries(new FormData(form));
+      if (company && company.trim()) data.message = `${UI[lang].company} : ${company.trim()}\n\n${data.message || ''}`;
+      data.formulaire = form.id === 'distribForm' ? 'distributeur' : 'contact';
+      data.langue = lang;
+      const envoi = location.protocol.startsWith('http')
+        ? fetch('/api/formulaire', { method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify(data), keepalive:true }).then(r => r.ok)
+        : Promise.resolve(false);
+      if (WA_NUMBER) { envoi.catch(() => {}); showToast(UI[lang].sent); }
+      else envoi.then(ok => showToast(ok ? UI[lang].sentDirect : UI[lang].sendErr), () => showToast(UI[lang].sendErr));
       form.reset(); fields.forEach(f => { f.removeAttribute('aria-invalid'); f.setCustomValidity(''); const er = f.parentElement.querySelector('.err'); if (er) er.textContent = ''; });
     });
   });
@@ -404,6 +435,6 @@
   chat.addEventListener('close', () => $('#chatBtn').focus());
   $('#chatForm').addEventListener('submit', e => { e.preventDefault(); ask(input.value); input.value = ''; });
 
-  $('#yr').textContent = new Date().getFullYear();
+  const yr = $('#yr'); if (yr) yr.textContent = new Date().getFullYear();
   applyLang(lang);
 })();
